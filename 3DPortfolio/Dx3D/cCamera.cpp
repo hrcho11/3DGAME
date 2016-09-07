@@ -3,8 +3,8 @@
 
 
 cCamera::cCamera()
-	:m_fZdist(-5.0f)
-	,m_fRotX(0.0f)
+	:m_fZdist(-45.0f)
+	,m_fRotX(0.4f)
 	,m_fRotY(0.0f)
 	, m_isDrag(false)
 {
