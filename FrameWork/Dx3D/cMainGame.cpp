@@ -24,9 +24,6 @@ cMainGame::cMainGame(void)
 	, m_pSkinnedMesh(NULL)
 	, m_pFrustum(NULL)
 {
-	//D3DXPLANE
-	//D3DXPlaneFromPoints(¾Æ¿ôÇ², Á¡1, Á¡2, Á¡3);
-	//°Å¸® = D3DXPlaneDotCoord(Æò¸é, Á¡)
 }
 
 cMainGame::~cMainGame(void)
