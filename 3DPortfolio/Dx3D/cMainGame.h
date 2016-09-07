@@ -8,7 +8,7 @@ class cMainGame
 {
 private:
 	cCamera*					m_pCamera;
-	cSkinnedMesh*			m_pSkinnedMesh;
+	cSkinnedMesh*				m_pSkinnedMesh;
 	cTerrain*					m_pTerrain;
 public:
 	cMainGame(void);

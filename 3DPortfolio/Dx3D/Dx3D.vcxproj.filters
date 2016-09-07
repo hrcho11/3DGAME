@@ -52,6 +52,12 @@
     <Filter Include="FrameWork\Terrain">
       <UniqueIdentifier>{26b6ec0b-231a-41ef-b695-e4820b47018f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Collider">
+      <UniqueIdentifier>{9cdd6eaa-298c-48d3-b048-acf19403dee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Collider\Sphere">
+      <UniqueIdentifier>{74187dab-6ded-4db0-a1c3-e5b10f6b3e14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -117,6 +123,15 @@
     <ClInclude Include="cTerrain.h">
       <Filter>FrameWork\Terrain</Filter>
     </ClInclude>
+    <ClInclude Include="cCollider.h">
+      <Filter>FrameWork\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafxCollider.h">
+      <Filter>FrameWork\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="cSphereCollider.h">
+      <Filter>FrameWork\Collider\Sphere</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -166,6 +181,12 @@
     </ClCompile>
     <ClCompile Include="cTerrain.cpp">
       <Filter>FrameWork\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="cCollider.cpp">
+      <Filter>FrameWork\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="cSphereCollider.cpp">
+      <Filter>FrameWork\Collider\Sphere</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
