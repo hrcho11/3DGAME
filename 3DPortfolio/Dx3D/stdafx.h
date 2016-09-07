@@ -168,6 +168,7 @@ public: virtual void Set##funName(varType var){\
 
 #include "cObject.h"
 #include "cObjectManager.h"
+#include "stdafxCollider.h"
 #include "cAutoReleasePool.h"
 #include "cDeviceManager.h"
 #include "cTextureManager.h"

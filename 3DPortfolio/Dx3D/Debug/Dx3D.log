@@ -1,16 +1,15 @@
-﻿Build started 2016-09-07 오후 7:37:49.
-     1>Project "C:\Users\hrcho\Documents\GitHub\3DGAME\3DPortfolio\Dx3D\Dx3D.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2016-09-08 오전 6:45:30.
+     1>Project "C:\Users\Gun\Documents\GitHub\3DGAME\3DPortfolio\Dx3D\Dx3D.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\Dx3D.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt cMainGame.cpp cTerrain.cpp
-         cTerrain.cpp
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Dx3D.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt cMainGame.cpp
          cMainGame.cpp
-     1>c:\users\hrcho\documents\github\3dgame\3dportfolio\dx3d\cmaingame.cpp(30): warning C4316: 'cTerrain': object allocated on the heap may not be aligned 16
-         Generating Code...
+     1>c:\users\gun\documents\github\3dgame\3dportfolio\dx3d\cmaingame.cpp(30): warning C4316: 'cTerrain' : object allocated on the heap may not be aligned 16
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\hrcho\Documents\GitHub\3DGAME\3DPortfolio\Debug\Dx3D.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\hrcho\Documents\GitHub\3DGAME\3DPortfolio\Debug\Dx3D.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\hrcho\Documents\GitHub\3DGAME\3DPortfolio\Debug\Dx3D.lib" /MACHINE:X86 Debug\Dx3D.res
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Gun\Documents\GitHub\3DGAME\3DPortfolio\Debug\Dx3D.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Gun\Documents\GitHub\3DGAME\3DPortfolio\Debug\Dx3D.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Gun\Documents\GitHub\3DGAME\3DPortfolio\Debug\Dx3D.lib" /MACHINE:X86 Debug\Dx3D.res
          Debug\cAllocateHierarchy.obj
          Debug\cAutoReleasePool.obj
          Debug\cCamera.obj
+         Debug\cCollider.obj
          Debug\cDeviceManager.obj
          Debug\cFrustumCulling.obj
          Debug\cMainGame.obj
@@ -19,14 +18,15 @@
          Debug\cQuadTree.obj
          Debug\cSkinnedMesh.obj
          Debug\cSkinnedMeshManager.obj
+         Debug\cSphereCollider.obj
          Debug\cTerrain.obj
          Debug\cTextureManager.obj
          Debug\cTimeManager.obj
          Debug\Dx3D.obj
          Debug\stdafx.obj
-         Dx3D.vcxproj -> C:\Users\hrcho\Documents\GitHub\3DGAME\3DPortfolio\Debug\Dx3D.exe
-     1>Done Building Project "C:\Users\hrcho\Documents\GitHub\3DGAME\3DPortfolio\Dx3D\Dx3D.vcxproj" (Build target(s)).
+         Dx3D.vcxproj -> C:\Users\Gun\Documents\GitHub\3DGAME\3DPortfolio\Debug\Dx3D.exe
+     1>Done Building Project "C:\Users\Gun\Documents\GitHub\3DGAME\3DPortfolio\Dx3D\Dx3D.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.91
+Time Elapsed 00:00:00.92
