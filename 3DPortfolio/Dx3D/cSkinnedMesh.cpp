@@ -56,7 +56,7 @@ void cSkinnedMesh::Load( char* szDirectory, char* szFilename )
 	std::string sFullPath(szDirectory);
 	sFullPath += std::string(szFilename);
 
-	D3DXLoadMeshHierarchyFromX(sFullPath.c_str(),
+	HRESULT hr = D3DXLoadMeshHierarchyFromX(sFullPath.c_str(),
 		D3DXMESH_MANAGED,
 		g_pD3DDevice,
 		&ah,

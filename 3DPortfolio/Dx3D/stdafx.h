@@ -26,7 +26,7 @@
 #include <string>
 #include <assert.h>
 #include <d3dx9.h>
-
+#include <windowsx.h>
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
 
@@ -143,6 +143,7 @@ public:\
 #define SAFE_DELETE(p) if(p) {delete (p); (p) = NULL;}
 #define SAFE_DELETE_ARRAY(p) if(p) {delete [] (p); (p) = NULL;}
 #define SAFE_ADDREF(p) if(p) { (p)->AddRef(); }
+#define SAFE_DESTROY(p) {if(p) {p->Destroy(); delete p; p =nullptr;}}
 
 #define SYNTHESIZE(varType, varName, funName)\
 protected: varType varName;\
@@ -166,11 +167,9 @@ public: virtual void Set##funName(varType var){\
 }
 
 #include "cObject.h"
-#include "cGameObject.h"
 #include "cObjectManager.h"
 #include "cAutoReleasePool.h"
 #include "cDeviceManager.h"
 #include "cTextureManager.h"
-#include "cFontManager.h"
 #include "cTimeManager.h"
 #include "cSkinnedMeshManager.h"

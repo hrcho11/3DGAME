@@ -13,6 +13,45 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="FrameWork">
+      <UniqueIdentifier>{e2272d9a-6069-4238-9b44-2ab553253298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Manager">
+      <UniqueIdentifier>{08836895-7d29-49a8-949b-c51baf695a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Manager\DeviceManager">
+      <UniqueIdentifier>{e5ea0ff2-17cb-4939-85e1-5926e37b002a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Manager\TextureManager">
+      <UniqueIdentifier>{1841c817-f4ad-47c2-a303-459a44c99864}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Manager\SkinnedMeshManager">
+      <UniqueIdentifier>{d93e0859-469c-4ac4-912d-38e4690327cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Manager\TimeManager">
+      <UniqueIdentifier>{f12487ec-fd75-42c5-9eb4-ce547b2e686b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Manager\ObjectManager">
+      <UniqueIdentifier>{272f9f1b-b35d-4146-9736-9a26fcf9220e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\SkinnedMesh">
+      <UniqueIdentifier>{6177b9dc-2d60-40a6-bcb3-4d11f97cbc65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\AutoReleasePool">
+      <UniqueIdentifier>{48e3787c-4dc4-4175-b867-de5f7b7c077e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Camera">
+      <UniqueIdentifier>{cc45a8e5-7d14-470d-b158-3943175bcc60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object">
+      <UniqueIdentifier>{1fda5f88-453c-4f8a-a4ee-5efadb9df005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\QuadTree">
+      <UniqueIdentifier>{61dc25f6-fa03-4072-aa6c-e758bf529ea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Terrain">
+      <UniqueIdentifier>{26b6ec0b-231a-41ef-b695-e4820b47018f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -36,116 +75,47 @@
     <ClInclude Include="Dx3D.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="cMainGame.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cGrid.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cCamera.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cCube.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="cSkinnedMeshManager.h">
+      <Filter>FrameWork\Manager\SkinnedMeshManager</Filter>
     </ClInclude>
     <ClInclude Include="cDeviceManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cPyramid.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cCharactorController.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cObject.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cObjectManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cAutoReleasePool.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cUIObject.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cUIImageView.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>FrameWork\Manager\DeviceManager</Filter>
     </ClInclude>
     <ClInclude Include="cTextureManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cUITextView.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cFontManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cUIButton.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cLinearInterpolation.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cGameObject.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cAction.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cActionMove.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>FrameWork\Manager\TextureManager</Filter>
     </ClInclude>
     <ClInclude Include="cTimeManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>FrameWork\Manager\TimeManager</Filter>
     </ClInclude>
-    <ClInclude Include="cActionSeq.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cActionRepeat.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cObjLoader.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cMtlTex.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cGroup.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="iMap.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cObjMap.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cAseLoader.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cFrame.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cAseCharacter.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cHeightMap.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cRay.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cAllocateHierarchy.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="cObjectManager.h">
+      <Filter>FrameWork\Manager\ObjectManager</Filter>
     </ClInclude>
     <ClInclude Include="cSkinnedMesh.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>FrameWork\SkinnedMesh</Filter>
     </ClInclude>
-    <ClInclude Include="cSkinnedMeshManager.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="cAllocateHierarchy.h">
+      <Filter>FrameWork\SkinnedMesh</Filter>
     </ClInclude>
-    <ClInclude Include="cFrustum.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="cAutoReleasePool.h">
+      <Filter>FrameWork\AutoReleasePool</Filter>
+    </ClInclude>
+    <ClInclude Include="cObject.h">
+      <Filter>FrameWork\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cMainGame.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="cFrustumCulling.h">
+      <Filter>FrameWork\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="cCamera.h">
+      <Filter>FrameWork\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="cQuadTree.h">
+      <Filter>FrameWork\QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="cTerrain.h">
+      <Filter>FrameWork\Terrain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -155,116 +125,47 @@
     <ClCompile Include="Dx3D.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="cMainGame.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cGrid.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cCamera.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cCube.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="cSkinnedMeshManager.cpp">
+      <Filter>FrameWork\Manager\SkinnedMeshManager</Filter>
     </ClCompile>
     <ClCompile Include="cDeviceManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cPyramid.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cCharactorController.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cObjectManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cAutoReleasePool.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIImageView.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>FrameWork\Manager\DeviceManager</Filter>
     </ClCompile>
     <ClCompile Include="cTextureManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cUITextView.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cFontManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cUIButton.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cLinearInterpolation.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cGameObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cAction.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cActionMove.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>FrameWork\Manager\TextureManager</Filter>
     </ClCompile>
     <ClCompile Include="cTimeManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>FrameWork\Manager\TimeManager</Filter>
     </ClCompile>
-    <ClCompile Include="cActionSeq.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cActionRepeat.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cObjLoader.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cMtlTex.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cGroup.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="iMap.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cObjMap.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cAseLoader.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cFrame.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cAseCharacter.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cHeightMap.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cRay.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cAllocateHierarchy.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="cObjectManager.cpp">
+      <Filter>FrameWork\Manager\ObjectManager</Filter>
     </ClCompile>
     <ClCompile Include="cSkinnedMesh.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>FrameWork\SkinnedMesh</Filter>
     </ClCompile>
-    <ClCompile Include="cSkinnedMeshManager.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="cAllocateHierarchy.cpp">
+      <Filter>FrameWork\SkinnedMesh</Filter>
     </ClCompile>
-    <ClCompile Include="cFrustum.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="cAutoReleasePool.cpp">
+      <Filter>FrameWork\AutoReleasePool</Filter>
+    </ClCompile>
+    <ClCompile Include="cMainGame.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="cObject.cpp">
+      <Filter>FrameWork\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cFrustumCulling.cpp">
+      <Filter>FrameWork\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="cCamera.cpp">
+      <Filter>FrameWork\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="cQuadTree.cpp">
+      <Filter>FrameWork\QuadTree</Filter>
+    </ClCompile>
+    <ClCompile Include="cTerrain.cpp">
+      <Filter>FrameWork\Terrain</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

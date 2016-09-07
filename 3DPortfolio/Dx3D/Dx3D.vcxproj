@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -20,12 +20,14 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -79,87 +81,41 @@
     <None Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cAction.h" />
-    <ClInclude Include="cActionMove.h" />
-    <ClInclude Include="cActionRepeat.h" />
-    <ClInclude Include="cActionSeq.h" />
     <ClInclude Include="cAllocateHierarchy.h" />
-    <ClInclude Include="cAseCharacter.h" />
-    <ClInclude Include="cAseLoader.h" />
     <ClInclude Include="cAutoReleasePool.h" />
     <ClInclude Include="cCamera.h" />
-    <ClInclude Include="cCharactorController.h" />
-    <ClInclude Include="cCube.h" />
     <ClInclude Include="cDeviceManager.h" />
-    <ClInclude Include="cFontManager.h" />
-    <ClInclude Include="cFrame.h" />
-    <ClInclude Include="cFrustum.h" />
-    <ClInclude Include="cGameObject.h" />
-    <ClInclude Include="cGrid.h" />
-    <ClInclude Include="cGroup.h" />
-    <ClInclude Include="cHeightMap.h" />
-    <ClInclude Include="cLinearInterpolation.h" />
+    <ClInclude Include="cFrustumCulling.h" />
     <ClInclude Include="cMainGame.h" />
-    <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectManager.h" />
-    <ClInclude Include="cObjLoader.h" />
-    <ClInclude Include="cObjMap.h" />
-    <ClInclude Include="cPyramid.h" />
-    <ClInclude Include="cRay.h" />
+    <ClInclude Include="cQuadTree.h" />
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSkinnedMeshManager.h" />
+    <ClInclude Include="cTerrain.h" />
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
-    <ClInclude Include="cUIButton.h" />
-    <ClInclude Include="cUIImageView.h" />
-    <ClInclude Include="cUIObject.h" />
-    <ClInclude Include="cUITextView.h" />
     <ClInclude Include="Dx3D.h" />
-    <ClInclude Include="iMap.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cAction.cpp" />
-    <ClCompile Include="cActionMove.cpp" />
-    <ClCompile Include="cActionRepeat.cpp" />
-    <ClCompile Include="cActionSeq.cpp" />
     <ClCompile Include="cAllocateHierarchy.cpp" />
-    <ClCompile Include="cAseCharacter.cpp" />
-    <ClCompile Include="cAseLoader.cpp" />
     <ClCompile Include="cAutoReleasePool.cpp" />
     <ClCompile Include="cCamera.cpp" />
-    <ClCompile Include="cCharactorController.cpp" />
-    <ClCompile Include="cCube.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
-    <ClCompile Include="cFontManager.cpp" />
-    <ClCompile Include="cFrame.cpp" />
-    <ClCompile Include="cFrustum.cpp" />
-    <ClCompile Include="cGameObject.cpp" />
-    <ClCompile Include="cGrid.cpp" />
-    <ClCompile Include="cGroup.cpp" />
-    <ClCompile Include="cHeightMap.cpp" />
-    <ClCompile Include="cLinearInterpolation.cpp" />
+    <ClCompile Include="cFrustumCulling.cpp" />
     <ClCompile Include="cMainGame.cpp" />
-    <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectManager.cpp" />
-    <ClCompile Include="cObjLoader.cpp" />
-    <ClCompile Include="cObjMap.cpp" />
-    <ClCompile Include="cPyramid.cpp" />
-    <ClCompile Include="cRay.cpp" />
+    <ClCompile Include="cQuadTree.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
     <ClCompile Include="cSkinnedMeshManager.cpp" />
+    <ClCompile Include="cTerrain.cpp" />
     <ClCompile Include="cTextureManager.cpp" />
     <ClCompile Include="cTimeManager.cpp" />
-    <ClCompile Include="cUIButton.cpp" />
-    <ClCompile Include="cUIImageView.cpp" />
-    <ClCompile Include="cUIObject.cpp" />
-    <ClCompile Include="cUITextView.cpp" />
     <ClCompile Include="Dx3D.cpp" />
-    <ClCompile Include="iMap.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

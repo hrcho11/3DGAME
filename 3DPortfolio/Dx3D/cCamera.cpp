@@ -1,99 +1,134 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "cCamera.h"
 
 
-cCamera::cCamera(void)
-	: m_vEye(0, 0, -5)
-	, m_vLookAt(0, 0, 0)
-	, m_vUp(0, 1, 0)
-	, m_fDistance(5)
-	, m_fRotX(0.0f)
-	, m_fRotY(0.0f)
-	, m_isLButtonDown(false)
+cCamera::cCamera()
+	:m_fZdist(-5.0f)
+	,m_fRotX(0.0f)
+	,m_fRotY(0.0f)
+	, m_isDrag(false)
 {
 }
 
 
-cCamera::~cCamera(void)
+cCamera::~cCamera()
 {
 }
 
-void cCamera::Setup()
+void cCamera::Initialize()
 {
-	RECT rc;
-	GetClientRect(g_hWnd, &rc);
-
-	D3DXMatrixLookAtLH(&m_matView, &m_vEye, &m_vLookAt, &m_vUp);
-	g_pD3DDevice->SetTransform(D3DTS_VIEW, &m_matView);
-
-	D3DXMatrixPerspectiveFovLH(&m_matProj, 
-		D3DX_PI / 4.0f, 
-		rc.right / (float)rc.bottom,
-		1,
-		5000);
-	g_pD3DDevice->SetTransform(D3DTS_PROJECTION, &m_matProj);
-}
-
-void cCamera::Update(D3DXVECTOR3* pTarget)
-{
-	m_vEye = D3DXVECTOR3(0, 0, -m_fDistance);
 	
-	D3DXMATRIXA16 matRotX, matRotY, matRot;
-	D3DXMatrixRotationX(&matRotX, m_fRotX);
-	D3DXMatrixRotationY(&matRotY, m_fRotY);
-	matRot = matRotX * matRotY;
-	D3DXVec3TransformCoord(&m_vEye, &m_vEye, &matRot);
-	
-	if (pTarget)
+	D3DXVECTOR3 vEye, vLookAt, vUp;
+	D3DXMATRIXA16 matView, matProj;
+	vUp = D3DXVECTOR3(0.f, 1.f, 0.f);
+	vEye = D3DXVECTOR3(0.f, 0.f, m_fZdist);
+	vLookAt = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+
+	D3DXMatrixLookAtLH(&matView, &vEye, &vLookAt, &vUp);
+	g_pD3DDevice->SetTransform(D3DTS_VIEW, &matView);
+	RECT rect;
+
+	GetClientRect(g_hWnd, &rect);
+	int width = rect.right - rect.left;
+	int height = rect.bottom - rect.top;
+	D3DXMatrixPerspectiveFovLH(&matProj,D3DX_PI*0.25f , (float)width / (float)height, 1.0f, 1000.0f);
+	g_pD3DDevice->SetTransform(D3DTS_PROJECTION, &matProj);
+
+	D3DXMATRIXA16 matViewProj = matView * matProj;
+
+	m_cFrustum.Initialize();
+}
+
+void cCamera::Update(D3DXVECTOR3* vLookAt)
+{
+	D3DXMATRIXA16 matView;
+	D3DXVECTOR3 vPos = D3DXVECTOR3(0.f, 0.f, m_fZdist);
+
+	D3DXMATRIXA16 matRotationX,matRotationY,matR;
+
+	D3DXMatrixRotationX(&matRotationX, m_fRotX);
+	D3DXMatrixRotationY(&matRotationY, m_fRotY);
+	matR = matRotationX *  matRotationY;
+	D3DXVec3TransformCoord(&vPos, &vPos, &matR);
+
+	D3DXVECTOR3 vLook = D3DXVECTOR3(0.f, 0.f, 0.f);
+	D3DXVECTOR3 vUp = D3DXVECTOR3(0.f, 1.0f, 0.f);
+	if (vLookAt)
 	{
-		m_vLookAt = *pTarget;
-		m_vEye = *pTarget + m_vEye;
+		vLook = *vLookAt;
+		vPos = *vLookAt + vPos;
 	}
 
-	D3DXMatrixLookAtLH(&m_matView, &m_vEye, &m_vLookAt, &m_vUp);
-	g_pD3DDevice->SetTransform(D3DTS_VIEW, &m_matView);
+	D3DXMatrixLookAtLH(&matView, &vPos, &vLook, &vUp);
+	g_pD3DDevice->SetTransform(D3DTS_VIEW, &matView);
+
+	m_cFrustum.Update();
 }
 
-void cCamera::WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
+void cCamera::Destroy()
 {
+}
+
+void cCamera::Render()
+{
+	m_cFrustum.Render();
+}
+
+bool cCamera::CheckFrustum(D3DXVECTOR3 * pv)
+{
+	if (m_cFrustum.IsIn(pv))
+		return true;
+	else false;
+}
+
+bool cCamera::CheckFrustum(D3DXVECTOR3 * pv, float radius)
+{
+	if(m_cFrustum.IsInSphere(pv, radius))
+		return true;
+	return false;
+}
+
+void cCamera::WindowInputProc(UINT message, WPARAM wParam, LPARAM lParam)
+{
+	
 	switch (message)
 	{
 	case WM_LBUTTONDOWN:
-		{
-			m_ptPrevMouse.x = LOWORD(lParam);
-			m_ptPrevMouse.y = HIWORD(lParam);
-			m_isLButtonDown = true;
-		}
+		m_isDrag = true;
+		m_ptPrevMousePos.x = GET_X_LPARAM(lParam);
+		m_ptPrevMousePos.y = GET_Y_LPARAM(lParam);
+
 		break;
 	case WM_LBUTTONUP:
-		m_isLButtonDown = false;
+		m_isDrag = false;
 		break;
 	case WM_MOUSEMOVE:
+		if (m_isDrag)
 		{
-			if (m_isLButtonDown)
-			{
-				POINT ptCurrMouse;
-				ptCurrMouse.x = LOWORD(lParam);
-				ptCurrMouse.y = HIWORD(lParam);
+			POINT ptMouse;
+			ptMouse.x = GET_X_LPARAM(lParam);
+			ptMouse.y = GET_Y_LPARAM(lParam);
 
-				m_fRotY += (ptCurrMouse.x - m_ptPrevMouse.x) / 100.f;
-				m_fRotX += (ptCurrMouse.y - m_ptPrevMouse.y) / 100.f;
+			float fDeltaX = (float)(ptMouse.x - m_ptPrevMousePos.x);
+			float fDeltaY = (float)(ptMouse.y - m_ptPrevMousePos.y);
 
-				if (m_fRotX <= -3.141592f * 0.5f + D3DX_16F_EPSILON)
-				{
-					m_fRotX = -3.141592f * 0.5f + D3DX_16F_EPSILON;
-				}
-				if (m_fRotX >=  3.141592f * 0.5f - D3DX_16F_EPSILON)
-				{
-					m_fRotX =  3.141592f * 0.5f - D3DX_16F_EPSILON;
-				}
+			m_fRotX += (fDeltaY / 100.f);
+			m_fRotY += (fDeltaX / 100.0f);
 
-				m_ptPrevMouse = ptCurrMouse;
-			}
+			if (m_fRotX <= -D3DX_PI *0.5f + 0.000125f)
+				m_fRotX = -D3DX_PI *0.5f + 0.000125f;
+			else if (m_fRotX >= D3DX_PI* 0.5f - 0.000125f)
+				m_fRotX = D3DX_PI* 0.5f - 0.000125f;
+
+			m_ptPrevMousePos = ptMouse;
 		}
+	
+
 		break;
 	case WM_MOUSEWHEEL:
-		m_fDistance -= GET_WHEEL_DELTA_WPARAM(wParam) / 100.f;
+		m_fZdist +=  GET_WHEEL_DELTA_WPARAM(wParam) /100.f;
+		if (m_fZdist > -1.0f)
+			m_fZdist = -1.0f;
 		break;
 	}
 }
