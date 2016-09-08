@@ -36,12 +36,3 @@ const cRay& cRay::GetRayVector(int x, int y)
 	return ray;
 }
 
-void cRay::Render()
-{
-	D3DXMATRIXA16 mat;
-	D3DXIntersectTri(
-		,
-		,
-		,
-		)
-}

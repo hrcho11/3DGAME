@@ -58,6 +58,7 @@
     <Filter Include="FrameWork\Collider\Sphere">
       <UniqueIdentifier>{74187dab-6ded-4db0-a1c3-e5b10f6b3e14}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="FrameWork\BaseEntity">
       <UniqueIdentifier>{29b1e988-5a1b-4ce4-8db9-17ffe873fe16}</UniqueIdentifier>
     </Filter>
@@ -66,6 +67,10 @@
     </Filter>
     <Filter Include="FrameWork\Ray">
       <UniqueIdentifier>{df7e973e-d682-4bc9-9246-ebc584d44371}</UniqueIdentifier>
+=======
+    <Filter Include="FrameWork\Collider\Capsule">
+      <UniqueIdentifier>{60205c7b-2ca2-4bf2-9fa5-afc1016de6b8}</UniqueIdentifier>
+>>>>>>> 67ade43da359f795b13995e49b61bee966d06f96
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +146,7 @@
     <ClInclude Include="cSphereCollider.h">
       <Filter>FrameWork\Collider\Sphere</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="cBaseEntity.h">
       <Filter>FrameWork\BaseEntity</Filter>
     </ClInclude>
@@ -149,6 +155,10 @@
     </ClInclude>
     <ClInclude Include="cRay.h">
       <Filter>FrameWork\Ray</Filter>
+=======
+    <ClInclude Include="cCapsuleCollider.h">
+      <Filter>FrameWork\Collider\Capsule</Filter>
+>>>>>>> 67ade43da359f795b13995e49b61bee966d06f96
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -206,11 +216,16 @@
     <ClCompile Include="cSphereCollider.cpp">
       <Filter>FrameWork\Collider\Sphere</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="cBaseEntity.cpp">
       <Filter>FrameWork\BaseEntity</Filter>
     </ClCompile>
     <ClCompile Include="cRay.cpp">
       <Filter>FrameWork\Ray</Filter>
+=======
+    <ClCompile Include="cCapsuleCollider.cpp">
+      <Filter>FrameWork\Collider\Capsule</Filter>
+>>>>>>> 67ade43da359f795b13995e49b61bee966d06f96
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

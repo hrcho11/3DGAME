@@ -5,19 +5,32 @@ private:
 	float			m_fRadius;
 	LPD3DXVECTOR3	m_pVec3Pos;
 	LPD3DXMESH		m_pMesh;
+
+private:
+	void RemodelMesh(float p_fRadius);
+
 public:
 	cSphereCollider();
 	cSphereCollider(float p_fRadius, LPD3DXVECTOR3 p_pVec3Pos);
 	virtual ~cSphereCollider();
 
+	bool			IntersectSphere(cSphereCollider* p_pSphereCol);
+	bool			IntersectCapsule(cCapsuleCollider* p_pCapsuleCol);
+
+	
 	//GetterSetter
-	float	GetRadius()					{ return m_fRadius; };
-	void	SetRadius(float p_fRadius)	{ m_fRadius = p_fRadius; };
+
+	float			GetRadius()							{ return m_fRadius; };
+	//반지름이 변경되면 크기가 변하기에
+	//렌더할 메쉬를 삭제한 후 다시 만듬 (Need a Solution)
+	void			SetRadiusAndMesh(float p_fRadius)	{ m_fRadius = p_fRadius; this->RemodelMesh(p_fRadius); };
 	
 	LPD3DXVECTOR3	GetPos()							{ return m_pVec3Pos; };
 	void			SetPos(LPD3DXVECTOR3 p_pVec3Pos)	{ m_pVec3Pos = p_pVec3Pos; };
 
+
 	//override cCollider
+
 	virtual cCollider::E_TYPE	GetType()								override;
 	virtual bool				IntersectCollider(cCollider* p_pCol)	override;
 	virtual void				Render()								override;
