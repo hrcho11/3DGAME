@@ -15,7 +15,7 @@ private:
 	ST_SPHERE					m_stBoundingSphere;
 
 	// 객체마다 생성
-	LPD3DXANIMATIONCONTROLLER	m_pAnimController;
+	LPD3DXANIMATIONCONTROLLER	 m_pAnimController;
 	D3DXVECTOR3					m_vPosition;
 
 public:
