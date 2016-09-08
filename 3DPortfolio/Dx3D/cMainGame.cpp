@@ -3,11 +3,14 @@
 #include "cCamera.h"
 #include "cSkinnedMesh.h"
 #include "cTerrain.h"
+#include "cRay.h"
 cMainGame::cMainGame(void)
 	: m_pCamera(NULL)
 	, m_pSkinnedMesh(NULL)
 	, m_pTerrain(NULL)
+	, m_pRay(NULL)
 {
+	
 }
 
 cMainGame::~cMainGame(void)
@@ -22,13 +25,13 @@ cMainGame::~cMainGame(void)
 
 void cMainGame::Setup()
 {
-
-
 	m_pCamera = new cCamera;
 	m_pCamera->Initialize();
 
 	m_pTerrain = new cTerrain;
 	m_pTerrain->Create();
+
+	m_pRay = new cRay;
 
 	g_pD3DDevice->SetRenderState(D3DRS_NORMALIZENORMALS, true);
 	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, false);
@@ -48,7 +51,6 @@ void cMainGame::Render()
 		NULL,
 		D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
 		D3DCOLOR_XRGB(47, 121, 112),
-		//D3DCOLOR_XRGB(0, 0, 255),
 		1.0f, 0);
 
 	g_pD3DDevice->BeginScene();
@@ -92,24 +94,9 @@ void cMainGame::WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 {
 	if (m_pCamera)
 		m_pCamera->WindowInputProc(message, wParam, lParam);
-
-	switch(message)
-	{
-	case WM_KEYDOWN:
-		{
-		}
-		break;
-	case WM_LBUTTONDOWN:
-		{
-			
-		}
-		break;
-	case WM_RBUTTONDOWN:
-		{
-			
-		}
-		break;
-	}
+	
+	if (m_pRay)
+		m_pRay->GetRayVector(LOWORD(lParam),HIWORD(lParam));
 }
 
 

@@ -58,6 +58,15 @@
     <Filter Include="FrameWork\Collider\Sphere">
       <UniqueIdentifier>{74187dab-6ded-4db0-a1c3-e5b10f6b3e14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\BaseEntity">
+      <UniqueIdentifier>{29b1e988-5a1b-4ce4-8db9-17ffe873fe16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\StateMachine">
+      <UniqueIdentifier>{83002933-858b-4098-9819-01afaf5a6520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Ray">
+      <UniqueIdentifier>{df7e973e-d682-4bc9-9246-ebc584d44371}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -132,6 +141,15 @@
     <ClInclude Include="cSphereCollider.h">
       <Filter>FrameWork\Collider\Sphere</Filter>
     </ClInclude>
+    <ClInclude Include="cBaseEntity.h">
+      <Filter>FrameWork\BaseEntity</Filter>
+    </ClInclude>
+    <ClInclude Include="cStateMachine.h">
+      <Filter>FrameWork\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="cRay.h">
+      <Filter>FrameWork\Ray</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -187,6 +205,12 @@
     </ClCompile>
     <ClCompile Include="cSphereCollider.cpp">
       <Filter>FrameWork\Collider\Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="cBaseEntity.cpp">
+      <Filter>FrameWork\BaseEntity</Filter>
+    </ClCompile>
+    <ClCompile Include="cRay.cpp">
+      <Filter>FrameWork\Ray</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -14,13 +14,14 @@
     <ProjectGuid>{234B7026-4A1A-48C8-AE2F-28BE29CE2185}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Dx3D</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -83,6 +84,7 @@
   <ItemGroup>
     <ClInclude Include="cAllocateHierarchy.h" />
     <ClInclude Include="cAutoReleasePool.h" />
+    <ClInclude Include="cBaseEntity.h" />
     <ClInclude Include="cCamera.h" />
     <ClInclude Include="cCollider.h" />
     <ClInclude Include="cDeviceManager.h" />
@@ -91,9 +93,11 @@
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectManager.h" />
     <ClInclude Include="cQuadTree.h" />
+    <ClInclude Include="cRay.h" />
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSkinnedMeshManager.h" />
     <ClInclude Include="cSphereCollider.h" />
+    <ClInclude Include="cStateMachine.h" />
     <ClInclude Include="cTerrain.h" />
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
@@ -106,6 +110,7 @@
   <ItemGroup>
     <ClCompile Include="cAllocateHierarchy.cpp" />
     <ClCompile Include="cAutoReleasePool.cpp" />
+    <ClCompile Include="cBaseEntity.cpp" />
     <ClCompile Include="cCamera.cpp" />
     <ClCompile Include="cCollider.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
@@ -114,6 +119,7 @@
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectManager.cpp" />
     <ClCompile Include="cQuadTree.cpp" />
+    <ClCompile Include="cRay.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
     <ClCompile Include="cSkinnedMeshManager.cpp" />
     <ClCompile Include="cSphereCollider.cpp" />
