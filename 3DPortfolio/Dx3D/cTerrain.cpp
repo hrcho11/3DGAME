@@ -57,8 +57,8 @@ void cTerrain::LoadTexture(char * lpTexFileName)
 
 void cTerrain::BuildTerrain()
 {
-	m_cxDIB = 257;
-	m_czDIB = 257;
+	m_cxDIB = TERRAIN_SIZE;
+	m_czDIB = TERRAIN_SIZE;
 
 	m_pvHeightMap = new ST_PNT_VERTEX[m_cxDIB *m_czDIB];
 
@@ -80,7 +80,7 @@ void cTerrain::BuildTerrain()
 
 void cTerrain::BuildQuadTree()
 {
-	m_pQuadTree = new cQuadTree(257,257);
+	m_pQuadTree = new cQuadTree(TERRAIN_SIZE, TERRAIN_SIZE);
 	m_pQuadTree->Build(m_pvHeightMap);
 }
 

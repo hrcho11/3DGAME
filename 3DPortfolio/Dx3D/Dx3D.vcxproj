@@ -93,6 +93,7 @@
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectManager.h" />
+    <ClInclude Include="cPlayer.h" />
     <ClInclude Include="cQuadTree.h" />
     <ClInclude Include="cRay.h" />
     <ClInclude Include="cSkinnedMesh.h" />
@@ -120,6 +121,7 @@
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectManager.cpp" />
+    <ClCompile Include="cPlayer.cpp" />
     <ClCompile Include="cQuadTree.cpp" />
     <ClCompile Include="cRay.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />

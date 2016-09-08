@@ -4,11 +4,13 @@
 #include "cSkinnedMesh.h"
 #include "cTerrain.h"
 #include "cRay.h"
+#include "cPlayer.h"
 cMainGame::cMainGame(void)
 	: m_pCamera(NULL)
 	, m_pSkinnedMesh(NULL)
 	, m_pTerrain(NULL)
 	, m_pRay(NULL)
+	, m_pPlayer(NULL)
 {
 	
 }
@@ -17,6 +19,7 @@ cMainGame::~cMainGame(void)
 {
 	SAFE_DELETE(m_pCamera);
 	SAFE_DELETE(m_pTerrain);
+	SAFE_DESTROY(m_pPlayer);
 	g_pTextureManager->Destroy();
 	g_pSkinnedMeshManager->Destroy();
 	g_pObjectManager->Destroy();
@@ -32,7 +35,8 @@ void cMainGame::Setup()
 	m_pTerrain->Create();
 
 	m_pRay = new cRay;
-
+	m_pPlayer = new cPlayer;
+	m_pPlayer->Init();
 	g_pD3DDevice->SetRenderState(D3DRS_NORMALIZENORMALS, true);
 	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, false);
 }
@@ -57,7 +61,9 @@ void cMainGame::Render()
 
 	// 그림을 그린다.
 	m_pTerrain->Draw(m_pCamera->GetFrustum());
-	
+
+
+	m_pPlayer->Render();
 	//충돌 테스트
 	/*
 	float fTestX = 5.0f;

@@ -147,18 +147,12 @@ bool cFrustumCulling::IsIn(D3DXVECTOR3 * pv)
 bool cFrustumCulling::IsInSphere(D3DXVECTOR3 * pv, float radius)
 {
 	float fDist = 0.0f;
-	fDist = D3DXPlaneDotCoord(&m_plane[0], pv);
-	if (fDist > radius) return false;
-	fDist = D3DXPlaneDotCoord(&m_plane[1], pv);
-	if (fDist > radius) return false;
-	fDist = D3DXPlaneDotCoord(&m_plane[2], pv);
-	if (fDist > radius) return false;
 	fDist = D3DXPlaneDotCoord(&m_plane[3], pv);
-	if (fDist > radius) return false;
+	if (fDist > radius + FRUSTUM_SPACE) return false;
 	fDist = D3DXPlaneDotCoord(&m_plane[4], pv);
-	if (fDist > radius) return false;
+	if (fDist > radius + FRUSTUM_SPACE) return false;
 	fDist = D3DXPlaneDotCoord(&m_plane[5], pv);
-	if (fDist > radius) return false;
+	if (fDist > radius + FRUSTUM_SPACE) return false;
 
 	return true;
 }

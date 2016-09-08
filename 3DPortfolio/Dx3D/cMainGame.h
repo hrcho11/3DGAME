@@ -4,7 +4,7 @@ class cCamera;
 class cSkinnedMesh;
 class cTerrain;
 class cRay;
-
+class cPlayer;
 class cMainGame
 {
 private:
@@ -12,6 +12,7 @@ private:
 	cSkinnedMesh*			m_pSkinnedMesh;
 	cTerrain*					m_pTerrain;
 	cRay*						m_pRay;
+	cPlayer*					m_pPlayer;
 public:
 	cMainGame(void);
 	~cMainGame(void);

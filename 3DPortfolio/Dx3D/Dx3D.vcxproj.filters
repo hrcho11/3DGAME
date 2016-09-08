@@ -67,6 +67,9 @@
     <Filter Include="FrameWork\Ray">
       <UniqueIdentifier>{df7e973e-d682-4bc9-9246-ebc584d44371}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Player">
+      <UniqueIdentifier>{8404258f-5163-4f71-9a44-8eb2f3d93d0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -150,6 +153,12 @@
     <ClInclude Include="cRay.h">
       <Filter>FrameWork\Ray</Filter>
     </ClInclude>
+    <ClInclude Include="cCapsuleCollider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayer.h">
+      <Filter>FrameWork\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -211,6 +220,12 @@
     </ClCompile>
     <ClCompile Include="cRay.cpp">
       <Filter>FrameWork\Ray</Filter>
+    </ClCompile>
+    <ClCompile Include="cCapsuleCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayer.cpp">
+      <Filter>FrameWork\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

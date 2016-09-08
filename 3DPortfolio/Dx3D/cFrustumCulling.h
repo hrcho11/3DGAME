@@ -2,6 +2,8 @@
 
 /* 해골책 참고*/
 
+
+#define FRUSTUM_SPACE 15.0f
 class cFrustumCulling
 {
 	D3DXVECTOR3		m_vtxProjection[8];

@@ -58,6 +58,7 @@ cQuadTree::~cQuadTree()
 }
 void cQuadTree::Destroy()
 {
+	SAFE_RELEASE(m_pMesh);
 	for (int i = 0; i < 4; i++)
 		SAFE_DESTROY(m_pChild[i]);
 }
@@ -112,13 +113,13 @@ bool cQuadTree::SubDivide()
 		m_nCorner[CORNER_BL] +
 		m_nCorner[CORNER_BR]) / 4;
 
-	//D3DXCreateBox(
-	//	g_pDevice,
-	//	m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL],
-	//	30,
-	//	m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL],
-	//	&m_pMesh,
-	//	NULL);
+	D3DXCreateBox(
+		g_pD3DDevice,
+		m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL],
+		2,
+		m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL],
+		&m_pMesh,
+		NULL);
 
 	if (m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL] <= 1)
 		return false;
@@ -503,8 +504,8 @@ void cQuadTree::Render()
 		g_pD3DDevice->SetTexture(0, NULL);
 		g_pD3DDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 		D3DXMATRIXA16 mat;
-		float x =  ((m_nCorner[CORNER_TL]%257) + (m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL] - 256.f) *0.5f);
-		float z = (m_nCorner[CORNER_TL] + (m_nCorner[CORNER_BL] - m_nCorner[CORNER_TL] - 65792.f) *0.5f) / 256.f;
+		float x =  ((m_nCorner[CORNER_TL]%33) + (m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL] - 32.f) *0.5f);
+		float z = (m_nCorner[CORNER_TL] + (m_nCorner[CORNER_BL] - m_nCorner[CORNER_TL] - 1024.f) *0.5f) / 32.f;
 		D3DXMatrixTranslation(&mat,
 			x,
 			0,
