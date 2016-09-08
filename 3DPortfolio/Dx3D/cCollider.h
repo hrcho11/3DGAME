@@ -5,7 +5,8 @@ class cCollider
 public:
 	enum E_TYPE
 	{
-		eSPHERE=0,
+		eSPHERE = 0,
+		eCAPSULE = 1,
 		eCOUNT,
 	};
 public:

@@ -84,6 +84,7 @@
     <ClInclude Include="cAllocateHierarchy.h" />
     <ClInclude Include="cAutoReleasePool.h" />
     <ClInclude Include="cCamera.h" />
+    <ClInclude Include="cCapsuleCollider.h" />
     <ClInclude Include="cCollider.h" />
     <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cFrustumCulling.h" />
@@ -107,6 +108,7 @@
     <ClCompile Include="cAllocateHierarchy.cpp" />
     <ClCompile Include="cAutoReleasePool.cpp" />
     <ClCompile Include="cCamera.cpp" />
+    <ClCompile Include="cCapsuleCollider.cpp" />
     <ClCompile Include="cCollider.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cFrustumCulling.cpp" />

@@ -58,6 +58,9 @@
     <Filter Include="FrameWork\Collider\Sphere">
       <UniqueIdentifier>{74187dab-6ded-4db0-a1c3-e5b10f6b3e14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Collider\Capsule">
+      <UniqueIdentifier>{60205c7b-2ca2-4bf2-9fa5-afc1016de6b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -132,6 +135,9 @@
     <ClInclude Include="cSphereCollider.h">
       <Filter>FrameWork\Collider\Sphere</Filter>
     </ClInclude>
+    <ClInclude Include="cCapsuleCollider.h">
+      <Filter>FrameWork\Collider\Capsule</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -187,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="cSphereCollider.cpp">
       <Filter>FrameWork\Collider\Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="cCapsuleCollider.cpp">
+      <Filter>FrameWork\Collider\Capsule</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

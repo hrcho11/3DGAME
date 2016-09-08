@@ -1,4 +1,4 @@
-﻿Build started 2016-09-08 오전 6:45:30.
+﻿Build started 2016-09-08 오후 5:43:50.
      1>Project "C:\Users\Gun\Documents\GitHub\3DGAME\3DPortfolio\Dx3D\Dx3D.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Dx3D.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt cMainGame.cpp
@@ -9,6 +9,7 @@
          Debug\cAllocateHierarchy.obj
          Debug\cAutoReleasePool.obj
          Debug\cCamera.obj
+         Debug\cCapsuleCollider.obj
          Debug\cCollider.obj
          Debug\cDeviceManager.obj
          Debug\cFrustumCulling.obj
@@ -29,4 +30,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.92
+Time Elapsed 00:00:01.40
