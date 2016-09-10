@@ -22,8 +22,6 @@ cMainGame::~cMainGame(void)
 
 void cMainGame::Setup()
 {
-
-
 	m_pCamera = new cCamera;
 	m_pCamera->Initialize();
 
@@ -93,23 +91,7 @@ void cMainGame::WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 	if (m_pCamera)
 		m_pCamera->WindowInputProc(message, wParam, lParam);
 
-	switch(message)
-	{
-	case WM_KEYDOWN:
-		{
-		}
-		break;
-	case WM_LBUTTONDOWN:
-		{
-			
-		}
-		break;
-	case WM_RBUTTONDOWN:
-		{
-			
-		}
-		break;
-	}
+	
 }
 
 

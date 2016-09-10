@@ -25,8 +25,10 @@
 #include <set>
 #include <string>
 #include <assert.h>
+
 #include <d3dx9.h>
 #include <windowsx.h>
+
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
 

@@ -58,6 +58,9 @@
     <Filter Include="FrameWork\Collider\Sphere">
       <UniqueIdentifier>{74187dab-6ded-4db0-a1c3-e5b10f6b3e14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Manager\ShadowManager">
+      <UniqueIdentifier>{00658920-fe03-4e31-abc9-fe3e661d8e10}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -132,6 +135,9 @@
     <ClInclude Include="cSphereCollider.h">
       <Filter>FrameWork\Collider\Sphere</Filter>
     </ClInclude>
+    <ClInclude Include="cShadowManager.h">
+      <Filter>FrameWork\Manager\ShadowManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -188,10 +194,21 @@
     <ClCompile Include="cSphereCollider.cpp">
       <Filter>FrameWork\Collider\Sphere</Filter>
     </ClCompile>
+    <ClCompile Include="cShadowManager.cpp">
+      <Filter>FrameWork\Manager\ShadowManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Dx3D.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CreateShadow.fx">
+      <Filter>FrameWork\Manager\ShadowManager</Filter>
+    </Text>
+    <Text Include="ApplyShadow.fx">
+      <Filter>FrameWork\Manager\ShadowManager</Filter>
+    </Text>
   </ItemGroup>
 </Project>
