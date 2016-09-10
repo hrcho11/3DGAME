@@ -22,8 +22,6 @@ cMainGame::~cMainGame(void)
 
 void cMainGame::Setup()
 {
-
-
 	m_pCamera = new cCamera;
 	m_pCamera->Initialize();
 
@@ -55,33 +53,6 @@ void cMainGame::Render()
 
 	// 그림을 그린다.
 	m_pTerrain->Draw(m_pCamera->GetFrustum());
-	
-	//충돌 테스트
-	/*
-	float fTestX = 5.0f;
-	if (GetAsyncKeyState(' ') & 0x8000)
-		fTestX = 10.0f;
-	
-	cCapsuleCollider* capsuleCollider = new cCapsuleCollider(3.0, &D3DXVECTOR3(0.0f, 5.0f, 0.0f),&D3DXVECTOR3(0.0f,10.0f,0.0f));
-	cCapsuleCollider* capsuleCollider1 = new cCapsuleCollider(3.0f, &D3DXVECTOR3(fTestX, 7.0f, 0.0f),&D3DXVECTOR3(fTestX+5.0f,9.0f,0.0f));
-	
-	D3DMATERIAL9 mtl;
-	if (IntersectColliders(capsuleCollider, capsuleCollider1))
-	{
-		mtl.Ambient = mtl.Diffuse = mtl.Emissive = mtl.Specular = D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f);
-	}
-	else
-	{
-		mtl.Ambient = mtl.Diffuse = mtl.Emissive = mtl.Specular = D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f);
-	}
-	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, true);
-	g_pD3DDevice->SetMaterial(&mtl);
-	capsuleCollider->Render();
-	capsuleCollider1->Render();
-	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, false);
-	SAFE_DELETE(capsuleCollider);
-	SAFE_DELETE(capsuleCollider1);
-	*/
 
 	g_pD3DDevice->EndScene();
 
