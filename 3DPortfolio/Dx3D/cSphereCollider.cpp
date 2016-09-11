@@ -3,17 +3,21 @@
 
 
 cSphereCollider::cSphereCollider()
+
 	: m_fRadius		(0.0f)
-	, m_pVec3Pos	(nullptr)
+	, m_pVec3Pivot	(nullptr)
 	, m_pMesh		(nullptr)
 {
 }
 
-cSphereCollider::cSphereCollider(float p_fRadius, LPD3DXVECTOR3 p_pVec3Pos)
+cSphereCollider::cSphereCollider
+	(float			p_fRadius,
+	LPD3DXVECTOR3	p_pVec3Pivot)
+
 	: m_fRadius		(p_fRadius)
-	, m_pVec3Pos	(p_pVec3Pos)
+	, m_pVec3Pivot	(p_pVec3Pivot)
 {
-	D3DXCreateSphere(g_pD3DDevice, m_fRadius, 10, 10, &m_pMesh, nullptr);
+	D3DXCreateSphere(g_pD3DDevice, p_fRadius, 10, 10, &m_pMesh, nullptr);
 }
 
 cSphereCollider::~cSphereCollider()
@@ -30,13 +34,13 @@ void cSphereCollider::RemodelMesh(float p_fRadius)
 
 bool cSphereCollider::IntersectSphere(cSphereCollider* p_pSphereCol)
 {
-	if (this->m_pVec3Pos == nullptr)		return false;
-	if (p_pSphereCol->GetPos() == nullptr)	return false;
+	if (this->m_pVec3Pivot			== nullptr)	return false;
+	if (p_pSphereCol->GetPivot()	== nullptr)	return false;
 
 	float fLengthSq =
 		D3DXVec3LengthSq(
 		&(
-		(*this->m_pVec3Pos) - (*p_pSphereCol->GetPos())
+		(*this->m_pVec3Pivot) - (*p_pSphereCol->GetPivot())
 		));
 	float fSumRadiusSq =
 		(this->m_fRadius + p_pSphereCol->GetRadius())*
@@ -47,13 +51,24 @@ bool cSphereCollider::IntersectSphere(cSphereCollider* p_pSphereCol)
 
 bool cSphereCollider::IntersectCapsule(cCapsuleCollider* p_pCapsuleCol)
 {
-	if (p_pCapsuleCol->Get_A_Pos() == nullptr)	return false;
-	if (p_pCapsuleCol->Get_B_Pos() == nullptr)	return false;
-	if (this->m_pVec3Pos == nullptr)			return false;
+	if (p_pCapsuleCol->GetDistanceA()	== nullptr)	return false;
+	if (p_pCapsuleCol->GetDistanceB()	== nullptr) return false;
+	if (p_pCapsuleCol->GetRadRotation()	== nullptr) return false;
+	if (this->m_pVec3Pivot				== nullptr)	return false;
 
-	D3DXVECTOR3 vec3A = (*p_pCapsuleCol->Get_A_Pos());
-	D3DXVECTOR3 vec3B = (*p_pCapsuleCol->Get_B_Pos());
-	D3DXVECTOR3 vec3P = (*this->m_pVec3Pos);
+	D3DXMATRIXA16 matR, matRX, matRY, matRZ;
+	D3DXMatrixRotationX(&matRX, p_pCapsuleCol->GetRadRotation()->x);
+	D3DXMatrixRotationY(&matRY, p_pCapsuleCol->GetRadRotation()->y);
+	D3DXMatrixRotationZ(&matRZ, p_pCapsuleCol->GetRadRotation()->z);
+	matR = matRX * matRY * matRZ;
+	
+	D3DXVECTOR3 vec3A = (p_pCapsuleCol->GetDistanceA());
+						D3DXVec3TransformCoord(&vec3A, &vec3A, &matR);
+						vec3A += *p_pCapsuleCol->GetPivot();
+	D3DXVECTOR3 vec3B = (p_pCapsuleCol->GetDistanceB());
+						D3DXVec3TransformCoord(&vec3B, &vec3B, &matR);
+						vec3B += *p_pCapsuleCol->GetPivot();
+	D3DXVECTOR3 vec3P = (*this->m_pVec3Pivot);
 	D3DXVECTOR3 vec3BA = vec3B - vec3A;
 	D3DXVECTOR3	vec3PA = vec3P - vec3A;
 	float fLength = D3DXVec3Length(&vec3BA);
@@ -121,11 +136,11 @@ bool cSphereCollider::IntersectCollider(cCollider* p_pCol)
 
 void cSphereCollider::Render()
 {
-	if (m_pVec3Pos)
+	if (this->m_pVec3Pivot)
 	{
 		D3DXMATRIXA16 matT;
 
-		D3DXMatrixTranslation(&matT, m_pVec3Pos->x, m_pVec3Pos->y, m_pVec3Pos->z);
+		D3DXMatrixTranslation(&matT, this->m_pVec3Pivot->x, this->m_pVec3Pivot->y, this->m_pVec3Pivot->z);
 
 		g_pD3DDevice->SetTransform(D3DTS_WORLD, &matT);
 		g_pD3DDevice->SetTexture(0, nullptr);
