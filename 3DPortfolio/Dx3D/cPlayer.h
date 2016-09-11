@@ -2,12 +2,13 @@
 #include "cBaseEntity.h"
 
 class cSkinnedMesh;
-
+class CharacterController;
 
 class cPlayer : public cBaseEntity
 {
 private:
-	cSkinnedMesh*		m_pSkinnedMesh;
+
+	CharacterController*	m_pCharacterController;
 public:
 	cPlayer();
 	~cPlayer();
@@ -16,5 +17,8 @@ public:
 	void Update();
 	void Destroy();
 	void Render();
+
+	void SetDestination(D3DXVECTOR3& pos);
+
 };
 

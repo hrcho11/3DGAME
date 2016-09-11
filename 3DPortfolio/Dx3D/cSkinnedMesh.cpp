@@ -10,6 +10,8 @@ cSkinnedMesh::cSkinnedMesh(char* szFolder, char* szFilename)
 	, m_pmWorkingPalette(NULL)
 	, m_pEffect(NULL)
 	, m_vPosition(0, 0, 0)
+	, m_fRotY(0.0f)
+	, m_dwCurrTrack(0)
 {
 	cSkinnedMesh* pSkinnedMesh =  g_pSkinnedMeshManager->GetSkinnedMesh(szFolder, szFilename);
 
@@ -91,10 +93,12 @@ void cSkinnedMesh::UpdateAndRender()
 
 	if(m_pRootFrame)
 	{
-		D3DXMATRIXA16 mat;
-		D3DXMatrixTranslation(&mat, m_vPosition.x, m_vPosition.y, m_vPosition.z);
+		D3DXMATRIXA16 matWorld,matR,matT;
+		D3DXMatrixRotationY(&matR, m_fRotY);
+		D3DXMatrixTranslation(&matT, m_vPosition.x, m_vPosition.y, m_vPosition.z);
+		matWorld = matR * matT;
 
-		Update(m_pRootFrame, &mat);
+		Update(m_pRootFrame, &matWorld);
 		Render(m_pRootFrame);
 	}
 }
@@ -307,10 +311,33 @@ void cSkinnedMesh::SetAnimationIndex( int nIndex )
 {
 	if(!m_pAnimController)
 		return;
-	LPD3DXANIMATIONSET pAnimSet = NULL;
-	m_pAnimController->GetAnimationSet(nIndex, &pAnimSet);
-	m_pAnimController->SetTrackAnimationSet(0, pAnimSet);
-	SAFE_RELEASE(pAnimSet);
+	if (nIndex == 2)
+	{
+		AttackOnlyOnce();
+		return;
+	}
+	DWORD dwNewTrack = (m_dwCurrTrack == 1 ? 0 : 1);
+	LPD3DXANIMATIONSET animSet = nullptr;
+
+	m_pAnimController->GetAnimationSet(nIndex, &animSet);
+	m_pAnimController->SetTrackAnimationSet(dwNewTrack, animSet);
+
+	SAFE_RELEASE(animSet);
+
+	m_pAnimController->UnkeyAllTrackEvents(dwNewTrack);
+	m_pAnimController->UnkeyAllTrackEvents(m_dwCurrTrack);
+
+	m_pAnimController->KeyTrackEnable(m_dwCurrTrack, FALSE, m_pAnimController->GetTime() + ANIMATION_TRANSITION_TIME);
+	m_pAnimController->KeyTrackSpeed(m_dwCurrTrack, 0.0f, m_pAnimController->GetTime(), ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+	m_pAnimController->KeyTrackWeight(m_dwCurrTrack, 0.0f, m_pAnimController->GetTime(), ANIMATION_TRANSITION_TIME,D3DXTRANSITION_LINEAR);
+
+	m_pAnimController->SetTrackEnable(dwNewTrack, TRUE);
+	m_pAnimController->KeyTrackSpeed(dwNewTrack, 1.0f, m_pAnimController->GetTime(), ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+	m_pAnimController->KeyTrackWeight(dwNewTrack, 1.0f, m_pAnimController->GetTime(), ANIMATION_TRANSITION_TIME,D3DXTRANSITION_LINEAR);
+
+	m_pAnimController->SetTrackPosition(dwNewTrack, 0.0f);
+	m_dwCurrTrack = dwNewTrack;
+
 }
 
 void cSkinnedMesh::Destroy()
@@ -321,7 +348,61 @@ void cSkinnedMesh::Destroy()
 	SAFE_RELEASE(m_pEffect);
 }
 
+
+
 void cSkinnedMesh::SetRandomTrackPosition()
 {
 	m_pAnimController->SetTrackPosition(0, (rand() % 100) / 10.0f);
+}
+
+void cSkinnedMesh::AttackOnlyOnce()
+{
+
+	DWORD dwNewTrack = (m_dwCurrTrack == 1 ? 0 : 1);
+	LPD3DXANIMATIONSET animSet = nullptr;
+
+	m_pAnimController->GetAnimationSet(2, &animSet);
+	m_pAnimController->SetTrackAnimationSet(dwNewTrack, animSet);
+
+	SAFE_RELEASE(animSet);
+
+	m_pAnimController->UnkeyAllTrackEvents(dwNewTrack);
+	m_pAnimController->UnkeyAllTrackEvents(m_dwCurrTrack);
+
+	m_pAnimController->KeyTrackEnable(m_dwCurrTrack, FALSE, m_pAnimController->GetTime() + ANIMATION_TRANSITION_TIME);
+	m_pAnimController->KeyTrackSpeed(m_dwCurrTrack, 0.0f, m_pAnimController->GetTime(), ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+	m_pAnimController->KeyTrackWeight(m_dwCurrTrack, 0.0f, m_pAnimController->GetTime(), ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+
+	m_pAnimController->SetTrackEnable(dwNewTrack, TRUE);
+	m_pAnimController->KeyTrackSpeed(dwNewTrack, 1.0f, m_pAnimController->GetTime(), ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+	m_pAnimController->KeyTrackWeight(dwNewTrack, 1.0f, m_pAnimController->GetTime(), ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+
+	m_pAnimController->SetTrackPosition(dwNewTrack, 0.0f);
+	m_dwCurrTrack = dwNewTrack;
+
+	dwNewTrack = (m_dwCurrTrack == 1 ? 0 : 1);
+
+	LPD3DXANIMATIONSET AtkanimSet = nullptr;
+	LPD3DXANIMATIONSET IdleAnimSet = nullptr;
+	m_pAnimController->GetAnimationSet(2, &AtkanimSet);
+	m_pAnimController->GetAnimationSet(0, &IdleAnimSet);
+	
+	m_pAnimController->SetTrackAnimationSet(dwNewTrack, IdleAnimSet);
+	
+	double startTime = m_pAnimController->GetTime() + AtkanimSet->GetPeriod();
+
+	m_pAnimController->KeyTrackEnable(m_dwCurrTrack, false, startTime);
+	m_pAnimController->KeyTrackSpeed(m_dwCurrTrack, 0.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+	m_pAnimController->KeyTrackWeight(m_dwCurrTrack, 0.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+
+	m_pAnimController->KeyTrackEnable(dwNewTrack, true, startTime);
+	m_pAnimController->KeyTrackSpeed(dwNewTrack, 1.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+	m_pAnimController->KeyTrackWeight(dwNewTrack, 1.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+
+	m_pAnimController->SetTrackPosition(dwNewTrack, 0.0f);
+	m_dwCurrTrack = dwNewTrack;
+
+	SAFE_RELEASE(AtkanimSet);
+	SAFE_RELEASE(IdleAnimSet);
+
 }

@@ -18,6 +18,8 @@ private:
 	cQuadTree*				m_pQuadTree;
 	float					m_fLODRatio;
 	D3DXMATRIXA16			m_matWorld;
+
+	ST_PC_VERTEX		m_vPickingGround[6];
 public:
 
 	void Create();
@@ -29,6 +31,8 @@ private:
 	void BuildQuadTree();
 	void CreateVIB();
 	void Render();
+
+	void CreatePickingGround();
 public:
 	cTerrain();
 	~cTerrain();
@@ -40,6 +44,8 @@ public:
 	float			GetCXTerrain() { return m_cxDIB* m_vfScale.x; }
 	float			GetCYTerrain() { return m_cyDIB* m_vfScale.y; }
 	float			GetCZTerrain() { return m_czDIB * m_vfScale.z; }
+	
+	ST_PC_VERTEX*		GetPickingGround() { return m_vPickingGround; }
 
 	void Draw(cFrustumCulling* pFrustum);
 };

@@ -24,7 +24,7 @@ const cRay& cRay::GetRayVector(int x, int y)
 
 	ray.m_vDir.x = ((x *2.0f) / viewPort.Width - 1.0f) / matProj._11;
 	ray.m_vDir.y = ((-y * 2.0f) / viewPort.Height + 1.0f) / matProj._22;
-	ray.m_vDir.z = 0.0f;
+	ray.m_vDir.z = 1.0f;
 
 	D3DXMATRIXA16 matView, matInvView;
 

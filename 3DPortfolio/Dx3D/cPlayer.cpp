@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "cPlayer.h"
-
+#include "CharacterController.h"
 
 cPlayer::cPlayer()
-	:m_pSkinnedMesh(nullptr)
+	:m_pCharacterController(nullptr)
 {
 }
 
@@ -14,21 +14,29 @@ cPlayer::~cPlayer()
 
 void cPlayer::Init()
 {
-	m_pSkinnedMesh = new cSkinnedMesh("Data/Character/human/", "human.X");
-	m_pSkinnedMesh->SetAnimationIndex(0);
-
+	m_pCharacterController = new CharacterController;
+	m_pCharacterController->Init();
 }
 
 void cPlayer::Update()
 {
+	m_pCharacterController->Update();
+
 }
 
 void cPlayer::Destroy()
 {
-	SAFE_DELETE(m_pSkinnedMesh);
+
+	SAFE_DESTROY(m_pCharacterController);
 }
 
 void cPlayer::Render()
 {
-	m_pSkinnedMesh->UpdateAndRender();
+	m_pCharacterController->Render();
 }
+
+void cPlayer::SetDestination(D3DXVECTOR3 & Destination)
+{
+	m_pCharacterController->StartRunning(Destination);
+}
+

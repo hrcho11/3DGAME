@@ -9,7 +9,6 @@ cMainGame::cMainGame(void)
 	: m_pCamera(NULL)
 	, m_pSkinnedMesh(NULL)
 	, m_pTerrain(NULL)
-	, m_pRay(NULL)
 	, m_pPlayer(NULL)
 {
 	
@@ -34,7 +33,6 @@ void cMainGame::Setup()
 	m_pTerrain = new cTerrain;
 	m_pTerrain->Create();
 
-	m_pRay = new cRay;
 	m_pPlayer = new cPlayer;
 	m_pPlayer->Init();
 	g_pD3DDevice->SetRenderState(D3DRS_NORMALIZENORMALS, true);
@@ -47,6 +45,9 @@ void cMainGame::Update()
 
 	if(m_pCamera)
 		m_pCamera->Update(&D3DXVECTOR3(0,0,0));
+
+	if (m_pPlayer)
+		m_pPlayer->Update();
 }
 
 void cMainGame::Render()
@@ -61,7 +62,6 @@ void cMainGame::Render()
 
 	// 그림을 그린다.
 	m_pTerrain->Draw(m_pCamera->GetFrustum());
-
 
 	m_pPlayer->Render();
 	//충돌 테스트
@@ -101,8 +101,33 @@ void cMainGame::WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
 	if (m_pCamera)
 		m_pCamera->WindowInputProc(message, wParam, lParam);
 	
-	if (m_pRay)
-		m_pRay->GetRayVector(LOWORD(lParam),HIWORD(lParam));
+	switch (message)
+	{
+		case WM_RBUTTONDOWN:
+				cRay ray = cRay::GetRayVector(LOWORD(lParam), HIWORD(lParam));
+				float u, v, dist;
+				for (int i = 0; i < 6; i+=3)
+				{
+					if (D3DXIntersectTri(
+						&m_pTerrain->GetPickingGround()[i].p,
+						&m_pTerrain->GetPickingGround()[i + 1].p,
+						&m_pTerrain->GetPickingGround()[i + 2].p,
+						ray.GetOrigin(),
+						ray.GetDirection(),
+						&u, &v, &dist))
+					{
+						D3DXVECTOR3 origin = *ray.GetOrigin();
+						D3DXVECTOR3 dir = *ray.GetDirection();
+						D3DXVECTOR3 pickedPosition = *ray.GetOrigin() + ((*ray.GetDirection()) * dist);
+						pickedPosition.y = 0.0f;
+						m_pPlayer->SetDestination(pickedPosition);
+						break;
+					}
+				}
+			break;
+	}
+
+	
 }
 
 

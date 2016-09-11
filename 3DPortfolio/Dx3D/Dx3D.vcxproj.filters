@@ -70,6 +70,9 @@
     <Filter Include="FrameWork\Player">
       <UniqueIdentifier>{8404258f-5163-4f71-9a44-8eb2f3d93d0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Manager\KeyManager">
+      <UniqueIdentifier>{a636d4ec-8e3b-4d03-937d-af7a65852427}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -159,6 +162,12 @@
     <ClInclude Include="cPlayer.h">
       <Filter>FrameWork\Player</Filter>
     </ClInclude>
+    <ClInclude Include="CharacterController.h">
+      <Filter>FrameWork\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="cKeyManager.h">
+      <Filter>FrameWork\Manager\KeyManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -226,6 +235,12 @@
     </ClCompile>
     <ClCompile Include="cPlayer.cpp">
       <Filter>FrameWork\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterController.cpp">
+      <Filter>FrameWork\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="cKeyManager.cpp">
+      <Filter>FrameWork\Manager\KeyManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,10 @@ public:
 	cRay();
 	~cRay();
 
-	const cRay& GetRayVector(int x, int y);
+	static const cRay& GetRayVector(int x, int y);
+
+	D3DXVECTOR3*	GetOrigin() { return &m_vOrigin; }
+	D3DXVECTOR3*	GetDirection() { return &m_vDir; }
 
 };
 

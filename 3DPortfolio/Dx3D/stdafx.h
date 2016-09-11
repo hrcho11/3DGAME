@@ -31,6 +31,10 @@
 
 extern HWND g_hWnd;
 
+//알고리듬 짠거를 보여주는 디파인문. 주석을 풀면 쿼드트리, 픽킹용 바닥 등을 보여줌
+//#define SHOW_ALGORITHM_HYUNJAE
+
+
 //	1. Position 정점의 좌표 x,y,z(float)            : D3DFVF_XYZ
 // 	2. RHW (float)                                  : D3DFVF_XYZRHW (D3DFVF_XYZ 또는 D3DFVF_NORMAL과 같이 사용불가)
 // 	3. Blending Weight Data 결합 가중치 (float)		: D3DFVF_XYZB1 ~ D3DFVF_XYZB5
@@ -173,3 +177,4 @@ public: virtual void Set##funName(varType var){\
 #include "cTextureManager.h"
 #include "cTimeManager.h"
 #include "cSkinnedMeshManager.h"
+#include "cKeyManager.h"

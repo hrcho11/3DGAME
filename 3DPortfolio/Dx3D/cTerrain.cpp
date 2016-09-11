@@ -43,6 +43,7 @@ void cTerrain::Create()
 	LoadTexture("./Data/Map/texture.jpg");
 	CreateVIB();
 	BuildQuadTree();
+	CreatePickingGround();
 }
 
 void cTerrain::Destroy()
@@ -116,5 +117,32 @@ void cTerrain::Render()
 	g_pD3DDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	g_pD3DDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0,
 		m_cxDIB*m_czDIB, 0, m_nTriangles);
-	//m_pQuadTree->Render();
+
+
+
+
+#ifdef SHOW_ALGORITHM_HYUNJAE
+	//쿼드트리 잘라진 사각형들 보여주기용
+	m_pQuadTree->Render();
+
+	//픽킹그라운드 보여주기용
+	g_pD3DDevice->SetTexture(0, NULL);
+	g_pD3DDevice->DrawPrimitiveUP(
+		D3DPT_TRIANGLELIST, 2, m_vPickingGround, sizeof(ST_PC_VERTEX));
+#endif
+}
+
+void cTerrain::CreatePickingGround()
+{
+	
+	m_vPickingGround[0].p = D3DXVECTOR3(-TERRAIN_SIZE, 0, TERRAIN_SIZE);
+	m_vPickingGround[1].p = D3DXVECTOR3(TERRAIN_SIZE, 0, -TERRAIN_SIZE);
+	m_vPickingGround[2].p = D3DXVECTOR3(-TERRAIN_SIZE, 0, -TERRAIN_SIZE);
+
+	m_vPickingGround[3].p = D3DXVECTOR3(-TERRAIN_SIZE, 0, TERRAIN_SIZE);
+	m_vPickingGround[4].p = D3DXVECTOR3(TERRAIN_SIZE, 0, TERRAIN_SIZE);
+	m_vPickingGround[5].p = D3DXVECTOR3(TERRAIN_SIZE, 0, -TERRAIN_SIZE);
+
+	for (int i = 0; i < 6; i++)
+		m_vPickingGround[i].c = D3DXCOLOR(0.4, 0.6, 0.4, 1.0f);
 }

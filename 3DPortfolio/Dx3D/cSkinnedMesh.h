@@ -2,6 +2,8 @@
 
 struct ST_BONE;
 
+#define ANIMATION_TRANSITION_TIME 0.2f
+
 class cSkinnedMesh
 {
 	friend class cSkinnedMeshManager;
@@ -16,8 +18,9 @@ private:
 
 	// 객체마다 생성
 	LPD3DXANIMATIONCONTROLLER	 m_pAnimController;
-	D3DXVECTOR3					m_vPosition;
-
+	D3DXVECTOR3						m_vPosition;
+	float								m_fRotY;
+	DWORD								m_dwCurrTrack;
 public:
 	cSkinnedMesh(char* szFolder, char* szFilename);
 	~cSkinnedMesh(void);
@@ -30,6 +33,11 @@ public:
 	{
 		m_vPosition = v;
 		m_stBoundingSphere.vCenter = v;
+	}
+
+	void AddRotY(float rotY)
+	{
+		m_fRotY += rotY;
 	}
 	ST_SPHERE* GetBoundingSphere()
 	{
@@ -44,5 +52,7 @@ private:
 	void Render(ST_BONE* pBone = NULL);
 	void SetupBoneMatrixPtrs(ST_BONE* pBone);
 	void Destroy();
+
+	void AttackOnlyOnce();
 };
 

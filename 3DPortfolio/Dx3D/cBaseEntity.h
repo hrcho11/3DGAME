@@ -1,7 +1,7 @@
 #pragma once
 class cBaseEntity
 {
-private:
+protected:
 	int		m_nID;
 
 	static int m_nNextValidID;

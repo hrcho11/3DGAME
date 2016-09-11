@@ -90,6 +90,8 @@
     <ClInclude Include="cCollider.h" />
     <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cFrustumCulling.h" />
+    <ClInclude Include="CharacterController.h" />
+    <ClInclude Include="cKeyManager.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectManager.h" />
@@ -118,6 +120,8 @@
     <ClCompile Include="cCollider.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cFrustumCulling.cpp" />
+    <ClCompile Include="CharacterController.cpp" />
+    <ClCompile Include="cKeyManager.cpp" />
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectManager.cpp" />
