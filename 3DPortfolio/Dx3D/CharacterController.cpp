@@ -41,7 +41,7 @@ void CharacterController::Update()
 
 void CharacterController::Destroy()
 {
-	SAFE_DELETE(m_pSkinnedMesh);
+	//SAFE_DELETE(m_pSkinnedMesh);
 }
 
 void CharacterController::Render()
@@ -90,11 +90,17 @@ float CharacterController::CalculateRotY()
 	float fDirLength = D3DXVec3Length(&vDir);
 	float fvDestLength = D3DXVec3Length(&vDirDest);
 	float fCos = fDot / (fDirLength * fvDestLength);
-	float fAngle = acosf(fCos);
+	float fAngle = 0.0f;
+	
+	if (fCos >= 1.0f)
+		fAngle = 0.0f;
+	else 
+		fAngle = acosf(fCos);
 
 	D3DXVECTOR3 vCross;
 	D3DXVec3Cross(&vCross, &vDir, &vDirDest);
 	
+
 	if (vCross.y < 0.0f)
 		fAngle*=-1.0f;
 

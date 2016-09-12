@@ -5,6 +5,8 @@ class cSkinnedMesh;
 class cTerrain;
 class cRay;
 class cPlayer;
+class cMonsterManager;
+
 class cMainGame
 {
 private:
@@ -12,6 +14,7 @@ private:
 	cSkinnedMesh*			m_pSkinnedMesh;
 	cTerrain*					m_pTerrain;
 	cPlayer*					m_pPlayer;
+	cMonsterManager*		m_pMonsterManager;
 public:
 	cMainGame(void);
 	~cMainGame(void);

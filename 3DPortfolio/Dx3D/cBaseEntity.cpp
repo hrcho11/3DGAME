@@ -5,7 +5,10 @@
 int cBaseEntity::m_nNextValidID = 0;
 
 cBaseEntity::cBaseEntity()
+	:m_nHealth(100)
 {
+	m_nID = m_nNextValidID;
+	m_nNextValidID += 1;
 }
 
 

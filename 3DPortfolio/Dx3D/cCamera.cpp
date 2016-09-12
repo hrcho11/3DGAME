@@ -78,7 +78,8 @@ bool cCamera::CheckFrustum(D3DXVECTOR3 * pv)
 {
 	if (m_cFrustum.IsIn(pv))
 		return true;
-	else false;
+	else 
+		return false;
 }
 
 bool cCamera::CheckFrustum(D3DXVECTOR3 * pv, float radius)

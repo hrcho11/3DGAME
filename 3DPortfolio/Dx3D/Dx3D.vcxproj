@@ -93,6 +93,9 @@
     <ClInclude Include="CharacterController.h" />
     <ClInclude Include="cKeyManager.h" />
     <ClInclude Include="cMainGame.h" />
+    <ClInclude Include="cMonster.h" />
+    <ClInclude Include="cMonsterManager.h" />
+    <ClInclude Include="cMonsterOwnedStates.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectManager.h" />
     <ClInclude Include="cPlayer.h" />
@@ -101,6 +104,7 @@
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSkinnedMeshManager.h" />
     <ClInclude Include="cSphereCollider.h" />
+    <ClInclude Include="cState.h" />
     <ClInclude Include="cStateMachine.h" />
     <ClInclude Include="cTerrain.h" />
     <ClInclude Include="cTextureManager.h" />
@@ -123,6 +127,9 @@
     <ClCompile Include="CharacterController.cpp" />
     <ClCompile Include="cKeyManager.cpp" />
     <ClCompile Include="cMainGame.cpp" />
+    <ClCompile Include="cMonster.cpp" />
+    <ClCompile Include="cMonsterManager.cpp" />
+    <ClCompile Include="cMonsterOwnedStates.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectManager.cpp" />
     <ClCompile Include="cPlayer.cpp" />

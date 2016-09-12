@@ -1,9 +1,9 @@
 #pragma once
-class cBaseEntity
+class cBaseEntity :public cObject
 {
 protected:
 	int		m_nID;
-
+	int		m_nHealth;
 	static int m_nNextValidID;
 public:
 	cBaseEntity();

@@ -5,11 +5,13 @@
 #include "cTerrain.h"
 #include "cRay.h"
 #include "cPlayer.h"
+#include "cMonsterManager.h"
 cMainGame::cMainGame(void)
 	: m_pCamera(NULL)
 	, m_pSkinnedMesh(NULL)
 	, m_pTerrain(NULL)
 	, m_pPlayer(NULL)
+	,m_pMonsterManager(NULL)
 {
 	
 }
@@ -18,7 +20,9 @@ cMainGame::~cMainGame(void)
 {
 	SAFE_DELETE(m_pCamera);
 	SAFE_DELETE(m_pTerrain);
-	SAFE_DESTROY(m_pPlayer);
+	m_pPlayer->Destroy();
+	SAFE_RELEASE(m_pPlayer);
+	SAFE_DESTROY(m_pMonsterManager);
 	g_pTextureManager->Destroy();
 	g_pSkinnedMeshManager->Destroy();
 	g_pObjectManager->Destroy();
@@ -35,6 +39,10 @@ void cMainGame::Setup()
 
 	m_pPlayer = new cPlayer;
 	m_pPlayer->Init();
+
+	m_pMonsterManager = new cMonsterManager;
+	m_pMonsterManager->Init();
+
 	g_pD3DDevice->SetRenderState(D3DRS_NORMALIZENORMALS, true);
 	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, false);
 }
@@ -64,6 +72,8 @@ void cMainGame::Render()
 	m_pTerrain->Draw(m_pCamera->GetFrustum());
 
 	m_pPlayer->Render();
+
+	m_pMonsterManager->Render();
 	//충돌 테스트
 	/*
 	float fTestX = 5.0f;

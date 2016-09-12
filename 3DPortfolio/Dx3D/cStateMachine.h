@@ -1,24 +1,14 @@
 #pragma once
-
-template<class entity_type>
-class State
-{
-public:
-	virtual void Enter(entity_type*) = 0;
-	virtual void Execute(entity_type*) = 0;
-	virtual void Exit(entity_type*) = 0;
-
-	virtual ~State() {}
-}; 
+#include "cState.h"
 
 template<class entity_type>
 class cStateMachine
 {
 private:
 	entity_type*				m_pOwner;
-	State<entity_type>*	m_pCurrentState;
-	State<entity_type>*	m_pPreviousState;
-	State<entity_type>*	m_pGlobalState;
+	cState<entity_type>*	m_pCurrentState;
+	cState<entity_type>*	m_pPreviousState;
+	cState<entity_type>*	m_pGlobalState;
 public:
 	cStateMachine(entity_type* owner)
 		:m_pOwner(nullptr)
@@ -30,15 +20,15 @@ public:
 	}
 	~cStateMachine() {};
 
-	void SetCurrentState(State<entity_type>* s)
+	void SetCurrentState(cState<entity_type>* s)
 	{
 		m_pCurrentState = s;
 	}
-	void SetPreviousState(State<entity_type>* s)
+	void SetPreviousState(cState<entity_type>* s)
 	{
 		m_pPreviousState = s;
 	}
-	void SetGlobalState(State<entity_type>* s)
+	void SetGlobalState(cState<entity_type>* s)
 	{
 		m_pGlobalState = s;
 	}
@@ -54,7 +44,7 @@ public:
 			m_pCurrentState->Execute(m_pOwner);
 	}
 
-	void ChangeState(State<entity_type>* pNewState)
+	void ChangeState(cState<entity_type>* pNewState)
 	{
 		assert(pNewState && "<StateMachine::ChangeState: trying to change to a null state");
 
@@ -69,11 +59,11 @@ public:
 		ChangeState(m_pPreviousState);
 	}
 
-	State<entity_type>* GetCurrentState() const { return m_pCurrentState; }
-	State<entity_type>* GetGlobalState() const { return m_pGlobalState; }
-	State<entity_type>* GetPreviousState() const { return m_pPreviousState; }
+	cState<entity_type>* GetCurrentState() const { return m_pCurrentState; }
+	cState<entity_type>* GetGlobalState() const { return m_pGlobalState; }
+	cState<entity_type>* GetPreviousState() const { return m_pPreviousState; }
 
-	bool isInState(const State<entity_type>& st)const
+	bool isInState(const cState<entity_type>& st)const
 	{
 		if (st == m_pCurrentState)return true;
 		else false;

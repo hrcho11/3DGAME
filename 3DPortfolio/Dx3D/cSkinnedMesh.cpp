@@ -40,6 +40,7 @@ cSkinnedMesh::cSkinnedMesh()
 
 cSkinnedMesh::~cSkinnedMesh(void)
 {
+	Destroy();
 	SAFE_RELEASE(m_pAnimController);
 }
 
@@ -94,6 +95,7 @@ void cSkinnedMesh::UpdateAndRender()
 	if(m_pRootFrame)
 	{
 		D3DXMATRIXA16 matWorld,matR,matT;
+		D3DXMatrixIdentity(&matR);
 		D3DXMatrixRotationY(&matR, m_fRotY);
 		D3DXMatrixTranslation(&matT, m_vPosition.x, m_vPosition.y, m_vPosition.z);
 		matWorld = matR * matT;

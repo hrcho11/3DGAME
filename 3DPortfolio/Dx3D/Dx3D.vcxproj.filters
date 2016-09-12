@@ -73,6 +73,9 @@
     <Filter Include="FrameWork\Manager\KeyManager">
       <UniqueIdentifier>{a636d4ec-8e3b-4d03-937d-af7a65852427}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Monster">
+      <UniqueIdentifier>{ad9abc4d-83b5-4a4b-9660-85236dd0992b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -168,6 +171,18 @@
     <ClInclude Include="cKeyManager.h">
       <Filter>FrameWork\Manager\KeyManager</Filter>
     </ClInclude>
+    <ClInclude Include="cMonster.h">
+      <Filter>FrameWork\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="cMonsterOwnedStates.h">
+      <Filter>FrameWork\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="cMonsterManager.h">
+      <Filter>FrameWork\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="cState.h">
+      <Filter>FrameWork\StateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -241,6 +256,15 @@
     </ClCompile>
     <ClCompile Include="cKeyManager.cpp">
       <Filter>FrameWork\Manager\KeyManager</Filter>
+    </ClCompile>
+    <ClCompile Include="cMonster.cpp">
+      <Filter>FrameWork\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="cMonsterOwnedStates.cpp">
+      <Filter>FrameWork\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="cMonsterManager.cpp">
+      <Filter>FrameWork\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

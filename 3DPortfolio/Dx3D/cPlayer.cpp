@@ -10,6 +10,7 @@ cPlayer::cPlayer()
 
 cPlayer::~cPlayer()
 {
+
 }
 
 void cPlayer::Init()
@@ -26,8 +27,6 @@ void cPlayer::Update()
 
 void cPlayer::Destroy()
 {
-
-	SAFE_DESTROY(m_pCharacterController);
 }
 
 void cPlayer::Render()

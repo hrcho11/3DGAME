@@ -116,7 +116,7 @@ bool cQuadTree::SubDivide()
 	D3DXCreateBox(
 		g_pD3DDevice,
 		m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL],
-		2,
+		2.0f,
 		m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL],
 		&m_pMesh,
 		NULL);

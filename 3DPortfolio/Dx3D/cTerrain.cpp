@@ -144,5 +144,5 @@ void cTerrain::CreatePickingGround()
 	m_vPickingGround[5].p = D3DXVECTOR3(TERRAIN_SIZE, 0, -TERRAIN_SIZE);
 
 	for (int i = 0; i < 6; i++)
-		m_vPickingGround[i].c = D3DXCOLOR(0.4, 0.6, 0.4, 1.0f);
+		m_vPickingGround[i].c = D3DXCOLOR(0.4f, 0.6f, 0.4f, 1.0f);
 }
