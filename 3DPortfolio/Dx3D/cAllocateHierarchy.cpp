@@ -25,7 +25,7 @@ STDMETHODIMP cAllocateHierarchy::CreateFrame( THIS_ LPCSTR Name, LPD3DXFRAME *pp
 	{
 		int nLen = strlen(Name) + 1;
 		pBone->Name = new char[nLen];
-		strcpy(pBone->Name, Name);
+		strcpy_s(pBone->Name, sizeof(char) * nLen, Name);
 	}
 
 	pBone->pFrameFirstChild = NULL;
