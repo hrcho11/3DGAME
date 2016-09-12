@@ -16,7 +16,7 @@ public:
 		,m_pPreviousState(nullptr)
 		,m_pGlobalState(nullptr)
 	{
-
+		m_pOwner = owner;
 	}
 	~cStateMachine() {};
 
@@ -48,8 +48,12 @@ public:
 	{
 		assert(pNewState && "<StateMachine::ChangeState: trying to change to a null state");
 
-		m_pPreviousState = m_pCurrentState;
-		m_pCurrentState->Exit(m_pOwner);
+		if (m_pCurrentState)
+		{
+			m_pPreviousState = m_pCurrentState;
+			m_pCurrentState->Exit(m_pOwner);
+		}
+		
 		m_pCurrentState = pNewState;
 		m_pCurrentState->Enter(m_pOwner);
 	}
@@ -63,10 +67,12 @@ public:
 	cState<entity_type>* GetGlobalState() const { return m_pGlobalState; }
 	cState<entity_type>* GetPreviousState() const { return m_pPreviousState; }
 
-	bool isInState(const cState<entity_type>& st)const
+	bool isInState(cState<entity_type>* st)const
 	{
-		if (st == m_pCurrentState)return true;
-		else false;
+		if (st == m_pCurrentState)
+			return true;
+		else 
+			return false;
 	}
 };
 

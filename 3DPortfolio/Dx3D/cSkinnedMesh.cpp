@@ -12,6 +12,9 @@ cSkinnedMesh::cSkinnedMesh(char* szFolder, char* szFilename)
 	, m_vPosition(0, 0, 0)
 	, m_fRotY(0.0f)
 	, m_dwCurrTrack(0)
+	,m_isAtk(false)
+	,m_fCooltime(80.f)
+	,m_fTime(0.0f)
 {
 	cSkinnedMesh* pSkinnedMesh =  g_pSkinnedMeshManager->GetSkinnedMesh(szFolder, szFilename);
 
@@ -103,6 +106,17 @@ void cSkinnedMesh::UpdateAndRender()
 		Update(m_pRootFrame, &matWorld);
 		Render(m_pRootFrame);
 	}
+
+	if (m_isAtk)
+	{
+		m_fTime += 1.0f;
+		if (m_fTime >= m_fCooltime)
+		{
+			m_isAtk = false;
+			m_fTime = 0.0f;
+		}
+	}
+	
 }
 
 void cSkinnedMesh::Render(ST_BONE* pBone /*= NULL*/)
@@ -407,4 +421,5 @@ void cSkinnedMesh::AttackOnlyOnce()
 	SAFE_RELEASE(AtkanimSet);
 	SAFE_RELEASE(IdleAnimSet);
 
+	m_isAtk = true;
 }

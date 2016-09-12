@@ -56,6 +56,9 @@ void cMainGame::Update()
 
 	if (m_pPlayer)
 		m_pPlayer->Update();
+
+	if (m_pMonsterManager)
+		m_pMonsterManager->Update(m_pPlayer->GetPos());
 }
 
 void cMainGame::Render()
@@ -63,7 +66,7 @@ void cMainGame::Render()
 	g_pD3DDevice->Clear(NULL,
 		NULL,
 		D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
-		D3DCOLOR_XRGB(47, 121, 112),
+		D3DCOLOR_XRGB(230, 121, 112),
 		1.0f, 0);
 
 	g_pD3DDevice->BeginScene();

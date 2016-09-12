@@ -1,5 +1,10 @@
 #pragma once
 #include "cMonster.h"
+
+class Player;
+
+#define MONSTER_QUANTITY 3
+
 class cMonsterManager
 {
 private:
@@ -11,12 +16,14 @@ private:
 		TROLL,
 		UNDEAD
 	};
+
+
 public:
 	cMonsterManager();
 	~cMonsterManager();
 
 	void Init();
-	void Update();
+	void Update(D3DXVECTOR3& vPos);
 	void Destroy();
 	void Render();
 };

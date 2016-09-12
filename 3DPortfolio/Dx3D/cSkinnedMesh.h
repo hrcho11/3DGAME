@@ -21,9 +21,16 @@ private:
 	D3DXVECTOR3						m_vPosition;
 	float								m_fRotY;
 	DWORD								m_dwCurrTrack;
+
+
+	bool								m_isAtk;
+	float								m_fCooltime;
+	float								m_fTime;
 public:
 	cSkinnedMesh(char* szFolder, char* szFilename);
 	~cSkinnedMesh(void);
+
+	bool GetIsAtk() { return m_isAtk; }
 
 	void UpdateAndRender();
 	void SetAnimationIndex(int nIndex);

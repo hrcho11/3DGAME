@@ -1,9 +1,9 @@
 #pragma once
 #include "cBaseEntity.h"
-
+#include "CharacterController.h"
 class cSkinnedMesh;
-class CharacterController;
 
+class cMonsterManager;
 class cPlayer : public cBaseEntity
 {
 private:
@@ -20,5 +20,6 @@ public:
 
 	void SetDestination(D3DXVECTOR3& pos);
 
+	D3DXVECTOR3& GetPos() { return m_pCharacterController->GetPos(); }
 };
 

@@ -3,25 +3,10 @@
 
 class cMonster;
 
-class cState_Idle : public cState<cMonster>
-{
-	cState_Idle() {};
-	~cState_Idle() {}
-public:
-	static cState_Idle*	Get()
-	{
-		static cState_Idle instance;
-		return &instance;
-	}
-	virtual void Enter(cMonster* pMonster);
-	virtual void Execute(cMonster* pMonster);
-	virtual void Exit(cMonster* pMonster);
-};
-
 class cState_Run : public cState<cMonster>
 {
 private:
-	cState_Run();
+	cState_Run() {};
 	~cState_Run() {}
 
 public:
@@ -38,7 +23,7 @@ public:
 class cState_Attack : public cState<cMonster>
 {
 private:
-	cState_Attack();
+	cState_Attack() {};
 	~cState_Attack() {}
 
 public:

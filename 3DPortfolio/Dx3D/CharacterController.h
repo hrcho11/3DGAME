@@ -2,8 +2,6 @@
 
 #define EPSILON 0.05f
 
-
-
 class CharacterController
 {
 public:
@@ -38,5 +36,7 @@ public:
 
 	void ChangeState(eAnimationState state);
 
+
+	D3DXVECTOR3& GetPos() { return m_vPos; }
 };
 

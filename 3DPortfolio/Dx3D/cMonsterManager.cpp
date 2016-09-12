@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "cMonsterManager.h"
-
+#include "cPlayer.h"
 
 cMonsterManager::cMonsterManager()
 {
@@ -25,12 +25,20 @@ void cMonsterManager::Init()
 	m_vecMonster.push_back(troll);
 	m_vecMonster.push_back(undead);
 
+	std::vector<D3DXVECTOR3> vecPos;
+	vecPos.push_back(D3DXVECTOR3(-15.0f,0.0f,-15.0f));
+	vecPos.push_back(D3DXVECTOR3(15.0f, 0.0f, -15.0f));
+	vecPos.push_back(D3DXVECTOR3(15.0f, 0.0f, 15.0f));
+
+	for (size_t i = 0; i < m_vecMonster.size(); ++i)
+		m_vecMonster[i]->SetPos(vecPos[i]);
+		
 }
 
-void cMonsterManager::Update()
+void cMonsterManager::Update(D3DXVECTOR3& vPos)
 {
 	for each(cMonster* p in m_vecMonster)
-		p->Update();
+		p->Update(vPos);
 }
 
 void cMonsterManager::Destroy()

@@ -41,7 +41,6 @@ void CharacterController::Update()
 
 void CharacterController::Destroy()
 {
-	//SAFE_DELETE(m_pSkinnedMesh);
 }
 
 void CharacterController::Render()
@@ -116,6 +115,8 @@ void CharacterController::Attack()
 {
 	if(g_KeyManager->IsOnceKeyDown('A'))
 	{
+		if (m_pSkinnedMesh->GetIsAtk())
+			return;
 		ChangeState(ATK);
 	}
 }

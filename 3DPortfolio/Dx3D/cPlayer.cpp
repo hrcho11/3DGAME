@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cPlayer.h"
-#include "CharacterController.h"
+
+#include "cMonsterManager.h"
 
 cPlayer::cPlayer()
 	:m_pCharacterController(nullptr)
