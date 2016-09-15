@@ -26,6 +26,7 @@ private:
 	bool								m_isCoolTime;
 	float								m_fCooltime;
 	float								m_fTime;
+
 public:
 	cSkinnedMesh(char* szFolder, char* szFilename);
 	~cSkinnedMesh(void);

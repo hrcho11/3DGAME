@@ -31,6 +31,7 @@ cSkinnedMesh::cSkinnedMesh(char* szFolder, char* szFilename)
 		pSkinnedMesh->m_pAnimController->GetMaxNumTracks(),
 		pSkinnedMesh->m_pAnimController->GetMaxNumEvents(),
 		&m_pAnimController);
+
 }
 
 
@@ -45,9 +46,8 @@ cSkinnedMesh::cSkinnedMesh()
 }
 
 cSkinnedMesh::~cSkinnedMesh(void)
-{
-	Destroy();
-	SAFE_RELEASE(m_pAnimController);
+{	
+
 }
 
 void cSkinnedMesh::Load( char* szDirectory, char* szFilename )
@@ -77,6 +77,7 @@ void cSkinnedMesh::Load( char* szDirectory, char* szFilename )
 	m_stBoundingSphere.fRadius = D3DXVec3Length( &(ah.GetMin() - ah.GetMax()) );
 	m_stBoundingSphere.isInFrustum = false;
 
+
 	if( m_pmWorkingPalette )
 		delete [] m_pmWorkingPalette;
 
@@ -104,7 +105,7 @@ void cSkinnedMesh::UpdateAndRender()
 		D3DXMatrixIdentity(&matR);
 		D3DXMatrixRotationY(&matR, m_fRotY);
 		D3DXMatrixTranslation(&matT, m_vPosition.x, m_vPosition.y, m_vPosition.z);
-		D3DXMatrixScaling(&matS, 3.0f, 3.0f, 3.0f);
+		D3DXMatrixScaling(&matS, 5.0f, 5.0f, 5.0f);
 		matWorld = matS*matR * matT;
 
 		Update(m_pRootFrame, &matWorld);
@@ -365,6 +366,7 @@ void cSkinnedMesh::Destroy()
 	cAllocateHierarchy ah;
 	D3DXFrameDestroy((LPD3DXFRAME)m_pRootFrame, &ah);
 	SAFE_DELETE_ARRAY(m_pmWorkingPalette);
+	SAFE_RELEASE(m_pAnimController);
 	SAFE_RELEASE(m_pEffect);
 }
 
@@ -427,7 +429,6 @@ void cSkinnedMesh::AttackOnlyOnce()
 
 }
 
-
 bool cSkinnedMesh::AtkAnimationMatch()
 {
 	if (!m_isFireOnce)
@@ -450,7 +451,6 @@ bool cSkinnedMesh::AtkAnimationMatch()
 	else
 		return false;
 }
-
 
 bool cSkinnedMesh::IsAnimComplete()
 {

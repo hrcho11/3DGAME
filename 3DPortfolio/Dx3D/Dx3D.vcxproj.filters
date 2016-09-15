@@ -202,7 +202,7 @@
       <Filter>FrameWork\Map\Lava</Filter>
     </ClInclude>
     <ClInclude Include="cMapManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>FrameWork\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -297,7 +297,7 @@
       <Filter>FrameWork\Map\Lava</Filter>
     </ClCompile>
     <ClCompile Include="cMapManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>FrameWork\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
