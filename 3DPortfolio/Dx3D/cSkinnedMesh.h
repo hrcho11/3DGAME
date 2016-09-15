@@ -23,15 +23,14 @@ private:
 	DWORD								m_dwCurrTrack;
 
 	bool								m_isFireOnce;
-	bool								m_isAtk;
+	bool								m_isCoolTime;
 	float								m_fCooltime;
 	float								m_fTime;
 public:
 	cSkinnedMesh(char* szFolder, char* szFilename);
 	~cSkinnedMesh(void);
 
-	bool GetIsAtk() { return m_isAtk; }
-
+	bool GetIsCoolTime() { return m_isCoolTime; }
 	void UpdateAndRender();
 	void SetAnimationIndex(int nIndex);
 
@@ -52,6 +51,8 @@ public:
 	}
 
 	bool AtkAnimationMatch();
+
+	bool IsAnimComplete();
 private:
 	cSkinnedMesh();
 	void Load(char* szFolder, char* szFilename);

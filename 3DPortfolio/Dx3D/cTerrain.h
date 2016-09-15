@@ -9,15 +9,15 @@ private:
 	int						m_czDIB;
 	int						m_cyDIB;
 
-	D3DXVECTOR3				m_vfScale;
-	ST_PNT_VERTEX*			m_pvHeightMap;
-	LPDIRECT3DTEXTURE9		m_pTexture;
-	LPDIRECT3DVERTEXBUFFER9	m_pVB;
-	LPDIRECT3DINDEXBUFFER9	m_pIB;
-	int						m_nTriangles;
-	cQuadTree*				m_pQuadTree;
-	float					m_fLODRatio;
-	D3DXMATRIXA16			m_matWorld;
+	D3DXVECTOR3						m_vfScale;
+	ST_PNT_VERTEX*				m_pvHeightMap;
+	LPDIRECT3DTEXTURE9			m_pTexture;
+	LPDIRECT3DVERTEXBUFFER9		m_pVB;
+	LPDIRECT3DINDEXBUFFER9		m_pIB;
+	int									m_nTriangles;
+	cQuadTree*						m_pQuadTree;
+	float								m_fLODRatio;
+	D3DXMATRIXA16					m_matWorld;
 
 	ST_PC_VERTEX		m_vPickingGround[6];
 public:

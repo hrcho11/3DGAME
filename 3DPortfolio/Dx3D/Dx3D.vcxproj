@@ -92,8 +92,10 @@
     <ClInclude Include="cFrustumCulling.h" />
     <ClInclude Include="CharacterController.h" />
     <ClInclude Include="cKeyManager.h" />
+    <ClInclude Include="cLava.h" />
     <ClInclude Include="cMagicSkill.h" />
     <ClInclude Include="cMainGame.h" />
+    <ClInclude Include="cMapManager.h" />
     <ClInclude Include="cMonster.h" />
     <ClInclude Include="cMonsterManager.h" />
     <ClInclude Include="cMonsterOwnedStates.h" />
@@ -128,8 +130,10 @@
     <ClCompile Include="cFrustumCulling.cpp" />
     <ClCompile Include="CharacterController.cpp" />
     <ClCompile Include="cKeyManager.cpp" />
+    <ClCompile Include="cLava.cpp" />
     <ClCompile Include="cMagicSkill.cpp" />
     <ClCompile Include="cMainGame.cpp" />
+    <ClCompile Include="cMapManager.cpp" />
     <ClCompile Include="cMonster.cpp" />
     <ClCompile Include="cMonsterManager.cpp" />
     <ClCompile Include="cMonsterOwnedStates.cpp" />

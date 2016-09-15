@@ -4,7 +4,7 @@
 
 cCamera::cCamera()
 	:m_fZdist(-45.0f)
-	,m_fRotX(0.4f)
+	,m_fRotX(1.1f)
 	,m_fRotY(0.0f)
 	, m_isDrag(false)
 {
@@ -104,7 +104,7 @@ void cCamera::WindowInputProc(UINT message, WPARAM wParam, LPARAM lParam)
 		m_isDrag = false;
 		break;
 	case WM_MOUSEMOVE:
-		if (m_isDrag)
+		/*if (m_isDrag)
 		{
 			POINT ptMouse;
 			ptMouse.x = GET_X_LPARAM(lParam);
@@ -124,12 +124,12 @@ void cCamera::WindowInputProc(UINT message, WPARAM wParam, LPARAM lParam)
 			m_ptPrevMousePos = ptMouse;
 		}
 	
-
+		*/
 		break;
 	case WM_MOUSEWHEEL:
-		m_fZdist +=  GET_WHEEL_DELTA_WPARAM(wParam) /100.f;
-		if (m_fZdist > -1.0f)
-			m_fZdist = -1.0f;
+		//m_fZdist +=  GET_WHEEL_DELTA_WPARAM(wParam) /100.f;
+		//if (m_fZdist > -1.0f)
+		//	m_fZdist = -1.0f;
 		break;
 	}
 }

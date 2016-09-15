@@ -57,6 +57,17 @@ struct ST_PC_VERTEX
 	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE, };
 };
 
+struct ST_PCT_VERTEX
+{
+	ST_PCT_VERTEX() {}
+	ST_PCT_VERTEX(D3DXVECTOR3 _p, D3DCOLOR _c,D3DXVECTOR3 _t) : p(_p), c(_c), t(_t) {}
+
+	D3DXVECTOR3 p;
+	D3DCOLOR	c;
+	D3DXVECTOR2	t;
+	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1,};
+};
+
 struct ST_PN_VERTEX
 {
 	ST_PN_VERTEX() {}
@@ -117,14 +128,6 @@ struct ST_ROT_SAMPLE
 {
 	int				n;
 	D3DXQUATERNION	q;
-};
-
-struct ST_ASE_SCENE
-{
-	int nFirstFrame;
-	int nLastFrame;
-	int nFrameSpeed;
-	int nTicksPerFrame;
 };
 
 struct ST_SPHERE

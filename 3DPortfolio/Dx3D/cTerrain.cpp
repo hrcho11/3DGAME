@@ -32,7 +32,7 @@ void cTerrain::Draw(cFrustumCulling* pFrustum)
 	LPDWORD pI;
 
 	m_pIB->Lock(0, (m_cxDIB - 1) * (m_czDIB-1)* 2 * sizeof(TRIINDEX), (LPVOID*)&pI, 0);
-	m_nTriangles = m_pQuadTree->GenerateIndex(pI,m_pvHeightMap, pFrustum,0.1f);
+	m_nTriangles = m_pQuadTree->GenerateIndex(pI, m_pvHeightMap, pFrustum, 0.1f);
 	m_pIB->Unlock();
 	Render();
 }
@@ -118,17 +118,14 @@ void cTerrain::Render()
 	g_pD3DDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0,
 		m_cxDIB*m_czDIB, 0, m_nTriangles);
 
-
-
-
 #ifdef SHOW_ALGORITHM_HYUNJAE
 	//쿼드트리 잘라진 사각형들 보여주기용
 	m_pQuadTree->Render();
 
 	//픽킹그라운드 보여주기용
-	g_pD3DDevice->SetTexture(0, NULL);
-	g_pD3DDevice->DrawPrimitiveUP(
-		D3DPT_TRIANGLELIST, 2, m_vPickingGround, sizeof(ST_PC_VERTEX));
+	//g_pD3DDevice->SetTexture(0, NULL);
+	//g_pD3DDevice->DrawPrimitiveUP(
+	//	D3DPT_TRIANGLELIST, 2, m_vPickingGround, sizeof(ST_PC_VERTEX));
 #endif
 }
 

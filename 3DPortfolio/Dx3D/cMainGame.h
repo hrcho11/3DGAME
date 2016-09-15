@@ -1,21 +1,17 @@
 #pragma once
 
 class cCamera;
-class cSkinnedMesh;
-class cTerrain;
-class cRay;
 class cPlayer;
 class cMonsterManager;
-
+class cMapManager;
 class cMainGame
 {
 private:
 	cCamera*					m_pCamera;
 	cSkinnedMesh*			m_pSkinnedMesh;
-	cTerrain*					m_pTerrain;
 	cPlayer*					m_pPlayer;
 	cMonsterManager*		m_pMonsterManager;
-
+	cMapManager*			m_pMapManager;
 public:
 	cMainGame(void);
 	~cMainGame(void);

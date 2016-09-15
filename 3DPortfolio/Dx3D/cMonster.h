@@ -44,11 +44,14 @@ public:
 	cSkinnedMesh* GetSkinnedMesh() { return m_pSkinnedMesh; }
 	D3DXVECTOR3&	GetPos() { return m_vPos; }
 	D3DXVECTOR3&	GetDirection() { return m_vDir; }
+
+	void KeepDistance();
 	void Tracking();
 	float RotY(D3DXVECTOR3& vDir);
 
-	void Attack();
-	void Run();
+	void ChangeToAttack();
+	void ChangeToTrack();
+	void ChangeToAvoid();
 	bool SenseAtkPlayer();
 
 	void AIUpdate();

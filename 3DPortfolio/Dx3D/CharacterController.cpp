@@ -34,8 +34,8 @@ void CharacterController::Update()
 		m_pSkinnedMesh->SetPosition(Running());
 		break;
 	case ATK:
-		if (!m_pSkinnedMesh->GetIsAtk())
-			ChangeState(IDLE);
+		//if (!m_pSkinnedMesh->GetIsCoolTime())
+		//	ChangeState(IDLE);
 
 		if (m_pSkinnedMesh->AtkAnimationMatch())
 			g_pSkillManager->Fire(m_vPos, m_vDir);
@@ -120,7 +120,7 @@ void CharacterController::Attack()
 {
 	if(g_KeyManager->IsOnceKeyDown('A'))
 	{
-		if (m_pSkinnedMesh->GetIsAtk())
+		if (m_pSkinnedMesh->GetIsCoolTime())
 			return;
 		ChangeState(ATK);
 	}

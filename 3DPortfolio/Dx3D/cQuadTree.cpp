@@ -112,7 +112,7 @@ bool cQuadTree::SubDivide()
 		m_nCorner[CORNER_TR] +
 		m_nCorner[CORNER_BL] +
 		m_nCorner[CORNER_BR]) / 4;
-
+#ifdef SHOW_ALGORITHM_HYUNJAE
 	D3DXCreateBox(
 		g_pD3DDevice,
 		m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL],
@@ -120,7 +120,7 @@ bool cQuadTree::SubDivide()
 		m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL],
 		&m_pMesh,
 		NULL);
-
+#endif
 	if (m_nCorner[CORNER_TR] - m_nCorner[CORNER_TL] <= 1)
 		return false;
 
@@ -499,6 +499,7 @@ bool cQuadTree::BuildQuadTree(ST_PNT_VERTEX * pHeightMap)
 
 void cQuadTree::Render()
 {
+#ifdef SHOW_ALGORITHM_HYUNJAE
 	if (m_pMesh)
 	{
 		g_pD3DDevice->SetTexture(0, NULL);
@@ -513,6 +514,7 @@ void cQuadTree::Render()
 		g_pD3DDevice->SetTransform(D3DTS_WORLD, &mat);
 		m_pMesh->DrawSubset(0);
 	}
+#endif
 	if (m_pChild[0])
 		m_pChild[0]->Render();
 	if (m_pChild[1])

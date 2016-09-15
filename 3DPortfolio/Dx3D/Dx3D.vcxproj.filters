@@ -49,9 +49,6 @@
     <Filter Include="FrameWork\QuadTree">
       <UniqueIdentifier>{61dc25f6-fa03-4072-aa6c-e758bf529ea9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FrameWork\Terrain">
-      <UniqueIdentifier>{26b6ec0b-231a-41ef-b695-e4820b47018f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FrameWork\Collider">
       <UniqueIdentifier>{9cdd6eaa-298c-48d3-b048-acf19403dee8}</UniqueIdentifier>
     </Filter>
@@ -78,6 +75,15 @@
     </Filter>
     <Filter Include="FrameWork\Skills">
       <UniqueIdentifier>{74823b0c-2715-41a8-8e77-52859f4afd2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Map">
+      <UniqueIdentifier>{9a5090b6-940a-4706-a1a4-93829c1f49d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Map\Lava">
+      <UniqueIdentifier>{d2da266c-a7bb-44ec-b820-db121ec1eb84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Map\Terrain">
+      <UniqueIdentifier>{26b6ec0b-231a-41ef-b695-e4820b47018f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -142,7 +148,7 @@
       <Filter>FrameWork\QuadTree</Filter>
     </ClInclude>
     <ClInclude Include="cTerrain.h">
-      <Filter>FrameWork\Terrain</Filter>
+      <Filter>FrameWork\Map\Terrain</Filter>
     </ClInclude>
     <ClInclude Include="cCollider.h">
       <Filter>FrameWork\Collider</Filter>
@@ -192,6 +198,12 @@
     <ClInclude Include="cSkillManager.h">
       <Filter>FrameWork\Skills</Filter>
     </ClInclude>
+    <ClInclude Include="cLava.h">
+      <Filter>FrameWork\Map\Lava</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -240,7 +252,7 @@
       <Filter>FrameWork\QuadTree</Filter>
     </ClCompile>
     <ClCompile Include="cTerrain.cpp">
-      <Filter>FrameWork\Terrain</Filter>
+      <Filter>FrameWork\Map\Terrain</Filter>
     </ClCompile>
     <ClCompile Include="cCollider.cpp">
       <Filter>FrameWork\Collider</Filter>
@@ -280,6 +292,12 @@
     </ClCompile>
     <ClCompile Include="cSkillManager.cpp">
       <Filter>FrameWork\Skills</Filter>
+    </ClCompile>
+    <ClCompile Include="cLava.cpp">
+      <Filter>FrameWork\Map\Lava</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapManager.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

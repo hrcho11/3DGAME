@@ -19,7 +19,8 @@ void cMonster::Init(char* path, char* fileName)
 {
 	LoadModel(path, fileName);
 	m_pStateMachine = new cStateMachine<cMonster>(this);
-	m_pStateMachine->ChangeState(cState_Run::Get());
+	m_pStateMachine->ChangeState(cState_Track::Get());
+	m_pStateMachine->SetGlobalState(cGlobalState_Monster::Get());
 }
 
 void cMonster::Update( D3DXVECTOR3& vPos)
@@ -54,13 +55,23 @@ void cMonster::SetPlayerPos(D3DXVECTOR3 & playerPos)
 	m_vPlayerPos = playerPos;
 }
 
+void cMonster::KeepDistance()
+{
+	D3DXVECTOR3 vDir = -(m_vPlayerPos - m_vPos);
+	D3DXVec3Normalize(&vDir, &vDir);
+	
+	D3DXVECTOR3 vMove = m_vPos + (vDir * m_fSpeed);
+
+	m_pSkinnedMesh->AddRotY(RotY(vDir));
+	SetPos(vMove);
+}
+
 void cMonster::Tracking()
 {
 	D3DXVECTOR3 vDir = m_vPlayerPos - m_vPos;
 	D3DXVec3Normalize(&vDir, &vDir);
 
 	D3DXVECTOR3 vMove = m_vPos + (vDir * m_fSpeed);
-
 
 	m_pSkinnedMesh->AddRotY(RotY(vDir));
 	SetPos(vMove);
@@ -92,7 +103,7 @@ void cMonster::LoadModel(char * path, char * fileName)
 	m_pSkinnedMesh = new cSkinnedMesh(path, fileName);
 }
 
-void cMonster::Attack()
+void cMonster::ChangeToAttack()
 {
 	D3DXVECTOR3 vDir = m_vPlayerPos - m_vPos;
 	D3DXVec3Normalize(&vDir, &vDir);
@@ -102,9 +113,14 @@ void cMonster::Attack()
 	m_pStateMachine->ChangeState(cState_Attack::Get());
 }
 
-void cMonster::Run()
+void cMonster::ChangeToTrack()
 {
-	m_pStateMachine->ChangeState(cState_Run::Get());
+	m_pStateMachine->ChangeState(cState_Track::Get());
+}
+
+void cMonster::ChangeToAvoid()
+{
+	m_pStateMachine->ChangeState(cState_Avoid::Get());
 }
 
 bool cMonster::SenseAtkPlayer()
