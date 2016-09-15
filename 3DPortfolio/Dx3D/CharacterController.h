@@ -16,7 +16,6 @@ private:
 	D3DXVECTOR3				m_vDir;
 	D3DXVECTOR3				m_vDestination;
 	float						m_fSpeed;
-
 	eAnimationState m_eState;
 
 	cSkinnedMesh*		m_pSkinnedMesh;

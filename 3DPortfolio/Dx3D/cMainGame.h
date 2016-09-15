@@ -15,6 +15,7 @@ private:
 	cTerrain*					m_pTerrain;
 	cPlayer*					m_pPlayer;
 	cMonsterManager*		m_pMonsterManager;
+
 public:
 	cMainGame(void);
 	~cMainGame(void);

@@ -13,7 +13,8 @@ cSkinnedMesh::cSkinnedMesh(char* szFolder, char* szFilename)
 	, m_fRotY(0.0f)
 	, m_dwCurrTrack(0)
 	,m_isAtk(false)
-	,m_fCooltime(80.f)
+	, m_isFireOnce(false)
+	,m_fCooltime(60.f)
 	,m_fTime(0.0f)
 {
 	cSkinnedMesh* pSkinnedMesh =  g_pSkinnedMeshManager->GetSkinnedMesh(szFolder, szFilename);
@@ -30,6 +31,29 @@ cSkinnedMesh::cSkinnedMesh(char* szFolder, char* szFilename)
 		pSkinnedMesh->m_pAnimController->GetMaxNumTracks(),
 		pSkinnedMesh->m_pAnimController->GetMaxNumEvents(),
 		&m_pAnimController);
+}
+
+bool cSkinnedMesh::AtkAnimationMatch()
+{
+	if (!m_isFireOnce)
+	{
+		LPD3DXANIMATIONSET animSet;
+		m_pAnimController->GetTrackAnimationSet(m_dwCurrTrack, &animSet);
+		std::string str = animSet->GetName();
+		if (str == "attack")
+		{
+			D3DXTRACK_DESC trackDesc;
+			m_pAnimController->GetTrackDesc(m_dwCurrTrack, &trackDesc);
+			if (trackDesc.Position >= 0.5f)
+				m_isFireOnce = true;
+			else 
+				m_isFireOnce = false;
+		}
+		SAFE_RELEASE(animSet);
+		return m_isFireOnce;
+	}
+	else
+		return false;
 }
 
 cSkinnedMesh::cSkinnedMesh()
@@ -97,11 +121,12 @@ void cSkinnedMesh::UpdateAndRender()
 
 	if(m_pRootFrame)
 	{
-		D3DXMATRIXA16 matWorld,matR,matT;
+		D3DXMATRIXA16 matWorld,matR,matT,matS;
 		D3DXMatrixIdentity(&matR);
 		D3DXMatrixRotationY(&matR, m_fRotY);
 		D3DXMatrixTranslation(&matT, m_vPosition.x, m_vPosition.y, m_vPosition.z);
-		matWorld = matR * matT;
+		D3DXMatrixScaling(&matS, 2.0f, 2.0f, 2.0f);
+		matWorld = matS*matR * matT;
 
 		Update(m_pRootFrame, &matWorld);
 		Render(m_pRootFrame);
@@ -329,8 +354,8 @@ void cSkinnedMesh::SetAnimationIndex( int nIndex )
 		return;
 	if (nIndex == 2)
 	{
-		AttackOnlyOnce();
-		return;
+		m_isAtk = true;
+		m_isFireOnce = false;
 	}
 	DWORD dwNewTrack = (m_dwCurrTrack == 1 ? 0 : 1);
 	LPD3DXANIMATIONSET animSet = nullptr;
@@ -396,30 +421,30 @@ void cSkinnedMesh::AttackOnlyOnce()
 	m_pAnimController->SetTrackPosition(dwNewTrack, 0.0f);
 	m_dwCurrTrack = dwNewTrack;
 
-	dwNewTrack = (m_dwCurrTrack == 1 ? 0 : 1);
+	//dwNewTrack = (m_dwCurrTrack == 1 ? 0 : 1);
+	//
+	//LPD3DXANIMATIONSET AtkanimSet = nullptr;
+	//LPD3DXANIMATIONSET IdleAnimSet = nullptr;
+	//m_pAnimController->GetAnimationSet(2, &AtkanimSet);
+	//m_pAnimController->GetAnimationSet(0, &IdleAnimSet);
+	//
+	//m_pAnimController->SetTrackAnimationSet(dwNewTrack, IdleAnimSet);
+	//
+	//double startTime = m_pAnimController->GetTime() + AtkanimSet->GetPeriod();
+	//
+	//m_pAnimController->KeyTrackEnable(m_dwCurrTrack, false, startTime);
+	//m_pAnimController->KeyTrackSpeed(m_dwCurrTrack, 0.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+	//m_pAnimController->KeyTrackWeight(m_dwCurrTrack, 0.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+	//
+	//m_pAnimController->KeyTrackEnable(dwNewTrack, true, startTime);
+	//m_pAnimController->KeyTrackSpeed(dwNewTrack, 1.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+	//m_pAnimController->KeyTrackWeight(dwNewTrack, 1.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
+	//
+	//m_pAnimController->SetTrackPosition(dwNewTrack, 0.0f);
+	//m_dwCurrTrack = dwNewTrack;
+	//
+	//SAFE_RELEASE(AtkanimSet);
+	//SAFE_RELEASE(IdleAnimSet);
+	//
 
-	LPD3DXANIMATIONSET AtkanimSet = nullptr;
-	LPD3DXANIMATIONSET IdleAnimSet = nullptr;
-	m_pAnimController->GetAnimationSet(2, &AtkanimSet);
-	m_pAnimController->GetAnimationSet(0, &IdleAnimSet);
-	
-	m_pAnimController->SetTrackAnimationSet(dwNewTrack, IdleAnimSet);
-	
-	double startTime = m_pAnimController->GetTime() + AtkanimSet->GetPeriod();
-
-	m_pAnimController->KeyTrackEnable(m_dwCurrTrack, false, startTime);
-	m_pAnimController->KeyTrackSpeed(m_dwCurrTrack, 0.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
-	m_pAnimController->KeyTrackWeight(m_dwCurrTrack, 0.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
-
-	m_pAnimController->KeyTrackEnable(dwNewTrack, true, startTime);
-	m_pAnimController->KeyTrackSpeed(dwNewTrack, 1.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
-	m_pAnimController->KeyTrackWeight(dwNewTrack, 1.0f, startTime, ANIMATION_TRANSITION_TIME, D3DXTRANSITION_LINEAR);
-
-	m_pAnimController->SetTrackPosition(dwNewTrack, 0.0f);
-	m_dwCurrTrack = dwNewTrack;
-
-	SAFE_RELEASE(AtkanimSet);
-	SAFE_RELEASE(IdleAnimSet);
-
-	m_isAtk = true;
 }

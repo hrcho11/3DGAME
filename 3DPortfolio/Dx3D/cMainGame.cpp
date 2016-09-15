@@ -23,6 +23,8 @@ cMainGame::~cMainGame(void)
 	m_pPlayer->Destroy();
 	SAFE_RELEASE(m_pPlayer);
 	SAFE_DESTROY(m_pMonsterManager);
+
+	g_pSkillManager->Destroy();
 	g_pTextureManager->Destroy();
 	g_pSkinnedMeshManager->Destroy();
 	g_pObjectManager->Destroy();
@@ -40,8 +42,11 @@ void cMainGame::Setup()
 	m_pPlayer = new cPlayer;
 	m_pPlayer->Init();
 
+	g_pSkillManager->Init();
+
 	m_pMonsterManager = new cMonsterManager;
 	m_pMonsterManager->Init();
+
 
 	g_pD3DDevice->SetRenderState(D3DRS_NORMALIZENORMALS, true);
 	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, false);
@@ -50,7 +55,7 @@ void cMainGame::Setup()
 void cMainGame::Update()
 {
 	g_pTimeManager->Update();
-
+	
 	if(m_pCamera)
 		m_pCamera->Update(&D3DXVECTOR3(0,0,0));
 
@@ -59,6 +64,8 @@ void cMainGame::Update()
 
 	if (m_pMonsterManager)
 		m_pMonsterManager->Update(m_pPlayer->GetPos());
+
+	g_pSkillManager->Update();
 }
 
 void cMainGame::Render()
@@ -78,6 +85,7 @@ void cMainGame::Render()
 
 	m_pMonsterManager->Render();
 
+	g_pSkillManager->Render();
 
 	g_pD3DDevice->EndScene();
 

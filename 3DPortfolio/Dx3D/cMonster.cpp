@@ -7,7 +7,7 @@ cMonster::cMonster()
 	,m_pStateMachine(nullptr)
 	, m_fSpeed(0.03f)
 	,m_vDir(0.0f,0.0f,-1.0f)
-	,m_fAtkRadius(220.0f)
+	,m_fAtkRadius(150.0f)
 {
 }
 

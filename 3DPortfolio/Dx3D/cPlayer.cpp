@@ -23,7 +23,6 @@ void cPlayer::Init()
 void cPlayer::Update()
 {
 	m_pCharacterController->Update();
-
 }
 
 void cPlayer::Destroy()

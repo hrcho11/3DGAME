@@ -22,7 +22,7 @@ private:
 	float								m_fRotY;
 	DWORD								m_dwCurrTrack;
 
-
+	bool								m_isFireOnce;
 	bool								m_isAtk;
 	float								m_fCooltime;
 	float								m_fTime;
@@ -51,6 +51,7 @@ public:
 		return &m_stBoundingSphere;
 	}
 
+	bool AtkAnimationMatch();
 private:
 	cSkinnedMesh();
 	void Load(char* szFolder, char* szFilename);

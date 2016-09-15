@@ -1,7 +1,7 @@
 #pragma once
 #include "cQuadTree.h"
 
-#define TERRAIN_SIZE 33
+#define TERRAIN_SIZE 65
 class cTerrain
 {
 private:

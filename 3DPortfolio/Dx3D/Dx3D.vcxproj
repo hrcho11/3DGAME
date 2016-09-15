@@ -92,6 +92,7 @@
     <ClInclude Include="cFrustumCulling.h" />
     <ClInclude Include="CharacterController.h" />
     <ClInclude Include="cKeyManager.h" />
+    <ClInclude Include="cMagicSkill.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMonster.h" />
     <ClInclude Include="cMonsterManager.h" />
@@ -101,6 +102,7 @@
     <ClInclude Include="cPlayer.h" />
     <ClInclude Include="cQuadTree.h" />
     <ClInclude Include="cRay.h" />
+    <ClInclude Include="cSkillManager.h" />
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSkinnedMeshManager.h" />
     <ClInclude Include="cSphereCollider.h" />
@@ -126,6 +128,7 @@
     <ClCompile Include="cFrustumCulling.cpp" />
     <ClCompile Include="CharacterController.cpp" />
     <ClCompile Include="cKeyManager.cpp" />
+    <ClCompile Include="cMagicSkill.cpp" />
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cMonster.cpp" />
     <ClCompile Include="cMonsterManager.cpp" />
@@ -135,6 +138,7 @@
     <ClCompile Include="cPlayer.cpp" />
     <ClCompile Include="cQuadTree.cpp" />
     <ClCompile Include="cRay.cpp" />
+    <ClCompile Include="cSkillManager.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
     <ClCompile Include="cSkinnedMeshManager.cpp" />
     <ClCompile Include="cSphereCollider.cpp" />

@@ -76,6 +76,9 @@
     <Filter Include="FrameWork\Monster">
       <UniqueIdentifier>{ad9abc4d-83b5-4a4b-9660-85236dd0992b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Skills">
+      <UniqueIdentifier>{74823b0c-2715-41a8-8e77-52859f4afd2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -183,6 +186,12 @@
     <ClInclude Include="cState.h">
       <Filter>FrameWork\StateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="cMagicSkill.h">
+      <Filter>FrameWork\Skills</Filter>
+    </ClInclude>
+    <ClInclude Include="cSkillManager.h">
+      <Filter>FrameWork\Skills</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -265,6 +274,12 @@
     </ClCompile>
     <ClCompile Include="cMonsterManager.cpp">
       <Filter>FrameWork\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="cMagicSkill.cpp">
+      <Filter>FrameWork\Skills</Filter>
+    </ClCompile>
+    <ClCompile Include="cSkillManager.cpp">
+      <Filter>FrameWork\Skills</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

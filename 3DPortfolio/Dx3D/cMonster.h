@@ -42,8 +42,8 @@ public:
 	void SetAnim(eMonsterAnim anim);
 	void SetPlayerPos(D3DXVECTOR3& playerPos);
 	cSkinnedMesh* GetSkinnedMesh() { return m_pSkinnedMesh; }
-
-
+	D3DXVECTOR3&	GetPos() { return m_vPos; }
+	D3DXVECTOR3&	GetDirection() { return m_vDir; }
 	void Tracking();
 	float RotY(D3DXVECTOR3& vDir);
 

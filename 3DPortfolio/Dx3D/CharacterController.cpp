@@ -34,6 +34,11 @@ void CharacterController::Update()
 		m_pSkinnedMesh->SetPosition(Running());
 		break;
 	case ATK:
+		if (!m_pSkinnedMesh->GetIsAtk())
+			ChangeState(IDLE);
+
+		if (m_pSkinnedMesh->AtkAnimationMatch())
+			g_pSkillManager->Fire(m_vPos, m_vDir);
 		break;
 	}
 
