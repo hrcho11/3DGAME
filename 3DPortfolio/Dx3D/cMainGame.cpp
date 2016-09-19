@@ -13,16 +13,31 @@ cMainGame::cMainGame(void)
 	,m_pMonsterManager(NULL)
 	,m_pMapManager(NULL)
 {
+	//예제코드
+	m_vec3Pivot1 = D3DXVECTOR3(15.0f, 0.0f, 2.0f);
+	m_fDistPerSec1 = 5.0f;
+	m_vec3Direction1 = D3DXVECTOR3(-5.0f, 0.0f, 0.0f);
+	m_pSphereCollider1 = new cSphereCollider(5.0f, &m_vec3Pivot1, &m_fDistPerSec1, &m_vec3Direction1);
 	
+	m_vec3Pivot2 = D3DXVECTOR3(-15.0f, 0.0f, -2.0f);
+	m_fDistPerSec2 = 5.0f;
+	m_vec3Direction2 = D3DXVECTOR3(5.0f, 0.0f, 0.0f);
+	m_pSphereCollider2 = new cSphereCollider(5.0f, &m_vec3Pivot2, &m_fDistPerSec2, &m_vec3Direction2);
+	//예제코드
 }
 
 cMainGame::~cMainGame(void)
 {
+	//예제코드
+	delete m_pSphereCollider2;
+	delete m_pSphereCollider1;
+	//예제코드
 	SAFE_DELETE(m_pCamera);
 	m_pPlayer->Destroy();
 	SAFE_RELEASE(m_pPlayer);
 	SAFE_DESTROY(m_pMonsterManager);
 	SAFE_DESTROY(m_pMapManager);
+	g_pColliderManager->Destroy();
 	g_pSkillManager->Destroy();
 	g_pTextureManager->Destroy();
 	g_pSkinnedMeshManager->Destroy();
@@ -54,6 +69,8 @@ void cMainGame::Update()
 {
 	g_pTimeManager->Update();
 	
+	g_pColliderManager->Update();
+
 	if (m_pMapManager)
 		m_pMapManager->Update();
 
@@ -81,8 +98,11 @@ void cMainGame::Render()
 
 	g_pD3DDevice->BeginScene();
 
-
 	// 그림을 그린다.
+	if (GetKeyState(VK_F1) & 0x0001)
+	{
+		g_pColliderManager->Render();
+	}
 	m_pMapManager->Render(m_pCamera->GetFrustum());
 	
 	m_pPlayer->Render();

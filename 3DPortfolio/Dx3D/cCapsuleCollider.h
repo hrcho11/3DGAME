@@ -8,12 +8,14 @@ private:
 	D3DXVECTOR3		m_vec3DistA;
 	D3DXVECTOR3		m_vec3DistB;
 	LPD3DXMESH		m_pMesh;
+	LPD3DXMESH		m_pMeshA;
+	LPD3DXMESH		m_pMeshB;
+
 private:
-	     //보류
-	void CreateMesh(UINT unSlices, UINT unStacks);
+	cCapsuleCollider(){};
 	void RemodelMesh(float p_fRadius);
+
 public:
-	cCapsuleCollider();
 	//DistA와 DistB는 Pivot으로부터 떨어진 거리차를 나타낸다
 	cCapsuleCollider
 		(float			p_fRadius,
@@ -52,7 +54,7 @@ public:
 					{ m_vec3DistA = p_vec3DistA; };
 	
 	D3DXVECTOR3&	GetDistanceB()
-					{ return m_vec3DistA; };
+					{ return m_vec3DistB; };
 	void			SetDistanceB(D3DXVECTOR3& p_vec3DistB)
 					{ m_vec3DistB = p_vec3DistB; };
 
@@ -61,6 +63,9 @@ public:
 
 	virtual cCollider::E_TYPE	GetType()								override;
 	virtual bool				IntersectCollider(cCollider* p_pCol)	override;
+								//미구현
+	virtual bool				CollidePhysically(cCollider* p_pCol)	override;
+	virtual void				Update()								override;
 								//보류
 	virtual void				Render()								override;
 };

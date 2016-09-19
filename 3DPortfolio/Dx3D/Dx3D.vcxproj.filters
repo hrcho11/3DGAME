@@ -85,6 +85,9 @@
     <Filter Include="FrameWork\Map\Terrain">
       <UniqueIdentifier>{26b6ec0b-231a-41ef-b695-e4820b47018f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Collider\Capsule">
+      <UniqueIdentifier>{0ee2e7c2-9d9d-4820-8c0f-e37744700fc3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -168,9 +171,6 @@
     <ClInclude Include="cRay.h">
       <Filter>FrameWork\Ray</Filter>
     </ClInclude>
-    <ClInclude Include="cCapsuleCollider.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="cPlayer.h">
       <Filter>FrameWork\Player</Filter>
     </ClInclude>
@@ -203,6 +203,12 @@
     </ClInclude>
     <ClInclude Include="cMapManager.h">
       <Filter>FrameWork\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="cCapsuleCollider.h">
+      <Filter>FrameWork\Collider\Capsule</Filter>
+    </ClInclude>
+    <ClInclude Include="cColliderManager.h">
+      <Filter>FrameWork\Collider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -266,9 +272,6 @@
     <ClCompile Include="cRay.cpp">
       <Filter>FrameWork\Ray</Filter>
     </ClCompile>
-    <ClCompile Include="cCapsuleCollider.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="cPlayer.cpp">
       <Filter>FrameWork\Player</Filter>
     </ClCompile>
@@ -298,6 +301,12 @@
     </ClCompile>
     <ClCompile Include="cMapManager.cpp">
       <Filter>FrameWork\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="cCapsuleCollider.cpp">
+      <Filter>FrameWork\Collider\Capsule</Filter>
+    </ClCompile>
+    <ClCompile Include="cColliderManager.cpp">
+      <Filter>FrameWork\Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

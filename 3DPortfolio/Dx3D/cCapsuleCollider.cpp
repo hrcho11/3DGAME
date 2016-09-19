@@ -1,18 +1,6 @@
 #include "stdafx.h"
 #include "cCapsuleCollider.h"
 
-
-cCapsuleCollider::cCapsuleCollider()
-
-	: m_fRadius		(0.0f)
-	, m_pVec3RadRot	(nullptr)
-	, m_pVec3Pivot	(nullptr)
-	, m_vec3DistA	(0.0f, 0.0f, 0.0f)
-	, m_vec3DistB	(0.0f, 0.0f, 0.0f)
-	, m_pMesh		(nullptr)
-{
-}
-
 cCapsuleCollider::cCapsuleCollider
 	(float			p_fRadius, 
 	LPD3DXVECTOR3	p_pVec3RadRot, 
@@ -26,155 +14,30 @@ cCapsuleCollider::cCapsuleCollider
 	, m_vec3DistA	(p_vec3_A_Pos)
 	, m_vec3DistB	(p_vec3_B_Pos)
 	, m_pMesh		(nullptr)
+	, m_pMeshA		(nullptr)
+	, m_pMeshB		(nullptr)
 {
-	this->CreateMesh(10, 10);
+	D3DXCreateCylinder(g_pD3DDevice, p_fRadius, p_fRadius, D3DXVec3Length(&(m_vec3DistA - m_vec3DistB)), 10, 10, &m_pMesh, nullptr);
+	D3DXCreateSphere(g_pD3DDevice, p_fRadius, 10, 10, &m_pMeshA, nullptr);
+	D3DXCreateSphere(g_pD3DDevice, p_fRadius, 10, 10, &m_pMeshB, nullptr);
 }
 
 cCapsuleCollider::~cCapsuleCollider()
 {
 	SAFE_RELEASE(m_pMesh);
-}
-
-//보류
-void cCapsuleCollider::CreateMesh(UINT unSlices, UINT unStacks)
-{
-	//std::vector<D3DXVECTOR3> vecVertices;
-	//
-	//D3DXMATRIXA16 matRZ, matT, matL;
-	//vecVertices.push_back(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-	//D3DXMatrixTranslation(&matT, this->m_vec3DistA.x, this->m_vec3DistA.y, this->m_vec3DistA.z);
-	//D3DXMatrixLookAtLH(&matL, &this->m_vec3DistA, &this->m_vec3DistB, &D3DXVECTOR3(0.0f, 1.0f, 0.0f));
-	//for (size_t i = 0; i < unSlices; ++i)
-	//{
-	//	D3DXVECTOR3 v;
-	//	float fScale = m_fRadius;
-	//	D3DXMatrixRotationZ(&matRZ, D3DXToRadian(i * 360.0f / unSlices));
-	//	D3DXVec3TransformCoord(&v, &D3DXVECTOR3(fScale, 0, 0), &(matRZ));
-	//
-	//	vecVertices.push_back(v);
-	//}
-	//
-	//for (size_t i = 0; i < vecVertices.size(); ++i)
-	//{
-	//	D3DXVec3TransformCoord(&vecVertices[i], &vecVertices[i], &(matT*matL*matT));
-	//}
-	//
-	//vecVertices.push_back(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-	//D3DXMatrixTranslation(&matT, this->m_vec3DistB.x, this->m_vec3DistB.y, this->m_vec3DistB.z);
-	//D3DXMatrixLookAtLH(&matL, &this->m_vec3DistB, &this->m_vec3DistA, &D3DXVECTOR3(0.0f, 1.0f, 0.0f));
-	//for (size_t i = 0; i < unSlices; ++i)
-	//{
-	//	D3DXVECTOR3 v;
-	//	float fScale = m_fRadius;
-	//	D3DXMatrixRotationZ(&matRZ, D3DXToRadian(i * 360.0f / unSlices));
-	//	D3DXVec3TransformCoord(&v, &D3DXVECTOR3(fScale, 0, 0), &(matRZ));
-	//
-	//	vecVertices.push_back(v);
-	//}
-	//
-	//for (size_t i = unSlices + 1; i < vecVertices.size(); ++i)
-	//{
-	//	D3DXVec3TransformCoord(&vecVertices[i], &vecVertices[i], &(matT*matL*matT));
-	//}
-	//
-	//std::vector<WORD> vecIndices;
-	//
-	//for (int i = 0; i < unSlices - 1; ++i)
-	//{
-	//	vecIndices.push_back(0);
-	//	vecIndices.push_back(i + 1);
-	//	vecIndices.push_back(i + 2);
-	//}
-	//vecIndices.push_back(0);
-	//vecIndices.push_back(unSlices);
-	//vecIndices.push_back(1);
-	//
-	//for (int i = 0; i < unSlices - 1; ++i)
-	//{
-	//	vecIndices.push_back(unSlices + 1);
-	//	vecIndices.push_back(unSlices + 1 + i + 1);
-	//	vecIndices.push_back(unSlices + 1 + i + 2);
-	//}
-	//vecIndices.push_back(unSlices + 1);
-	//vecIndices.push_back(unSlices + 1 + unSlices);
-	//vecIndices.push_back(unSlices + 1 + 1);
-	//
-	//vecIndices.push_back(5);
-	//vecIndices.push_back(13);
-	//vecIndices.push_back(6);
-	//vecIndices.push_back(6);
-	//vecIndices.push_back(13);
-	//vecIndices.push_back(12);
-	//
-	//vecIndices.push_back(4);
-	//vecIndices.push_back(14);
-	//vecIndices.push_back(5);
-	//vecIndices.push_back(5);
-	//vecIndices.push_back(14);
-	//vecIndices.push_back(13);
-	//
-	//vecIndices.push_back(3);
-	//vecIndices.push_back(15);
-	//vecIndices.push_back(4);
-	//vecIndices.push_back(4);
-	//vecIndices.push_back(15);
-	//vecIndices.push_back(14);
-	//
-	//vecIndices.push_back(2);
-	//vecIndices.push_back(16);
-	//vecIndices.push_back(3);
-	//vecIndices.push_back(3);
-	//vecIndices.push_back(16);
-	//vecIndices.push_back(15);
-	//
-	//vecIndices.push_back(1);
-	//vecIndices.push_back(17);
-	//vecIndices.push_back(2);
-	//vecIndices.push_back(2);
-	//vecIndices.push_back(17);
-	//vecIndices.push_back(16);
-	//
-	//
-	//D3DXCreateMeshFVF(vecVertices.size(),
-	//	vecVertices.size(),
-	//	D3DXMESH_MANAGED|D3DXMESH_32BIT,
-	//	D3DFVF_XYZ,
-	//	g_pD3DDevice,
-	//	&m_pMesh);
-	//
-	//D3DXVECTOR3* pV = NULL;
-	//m_pMesh->LockVertexBuffer(0, (LPVOID*)&pV);
-	//memcpy(pV, &vecVertices[0], vecVertices.size() * sizeof(D3DXVECTOR3));
-	//m_pMesh->UnlockVertexBuffer();
-	//
-	//WORD* pI = NULL;
-	//m_pMesh->LockIndexBuffer(0, (LPVOID*)&pI);
-	//for (int i = 0; i < vecIndices.size(); ++i)
-	//{
-	//	pI[i] = vecIndices[i];
-	//}
-	//m_pMesh->UnlockIndexBuffer();
-	//
-	//DWORD* pA = NULL;
-	//m_pMesh->LockAttributeBuffer(0, &pA);
-	//ZeroMemory(pA, (vecIndices.size() / 3) * sizeof(DWORD));
-	//m_pMesh->UnlockAttributeBuffer();
-	//
-	//std::vector<DWORD> vecAdjBuf(m_pMesh->GetNumFaces() * 3);
-	//m_pMesh->GenerateAdjacency(0.0f, &vecAdjBuf[0]);
-	//
-	//m_pMesh->OptimizeInplace(
-	//	D3DXMESHOPT_ATTRSORT |
-	//	D3DXMESHOPT_COMPACT |
-	//	D3DXMESHOPT_VERTEXCACHE,
-	//	&vecAdjBuf[0], 0, 0, 0);
+	SAFE_RELEASE(m_pMeshA);
+	SAFE_RELEASE(m_pMeshB);
 }
 
 //메쉬를 삭제한 후 다시 만듬
 void cCapsuleCollider::RemodelMesh(float p_fRadius)
 {
 	SAFE_RELEASE(m_pMesh);
-	this->CreateMesh(10, 10);
+	SAFE_RELEASE(m_pMeshA);
+	SAFE_RELEASE(m_pMeshB);
+	D3DXCreateCylinder(g_pD3DDevice, p_fRadius, p_fRadius, D3DXVec3Length(&(m_vec3DistA - m_vec3DistB)), 10, 10, &m_pMesh, nullptr);
+	D3DXCreateSphere(g_pD3DDevice, p_fRadius, 10, 10, &m_pMeshA, nullptr);
+	D3DXCreateSphere(g_pD3DDevice, p_fRadius, 10, 10, &m_pMeshB, nullptr);
 }
 
 bool cCapsuleCollider::IntersectSphere(cSphereCollider* p_pSphereCol)
@@ -408,6 +271,16 @@ bool cCapsuleCollider::IntersectCollider(cCollider* p_pCol)
 	return false;
 }
 
+//미구현
+bool cCapsuleCollider::CollidePhysically(cCollider* p_pCol)
+{
+	return false;
+}
+
+void cCapsuleCollider::Update()
+{
+
+}
 
 //보류
 void cCapsuleCollider::Render()

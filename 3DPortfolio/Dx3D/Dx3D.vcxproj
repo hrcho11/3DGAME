@@ -21,7 +21,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -88,6 +88,7 @@
     <ClInclude Include="cCamera.h" />
     <ClInclude Include="cCapsuleCollider.h" />
     <ClInclude Include="cCollider.h" />
+    <ClInclude Include="cColliderManager.h" />
     <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cFrustumCulling.h" />
     <ClInclude Include="CharacterController.h" />
@@ -126,6 +127,7 @@
     <ClCompile Include="cCamera.cpp" />
     <ClCompile Include="cCapsuleCollider.cpp" />
     <ClCompile Include="cCollider.cpp" />
+    <ClCompile Include="cColliderManager.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cFrustumCulling.cpp" />
     <ClCompile Include="CharacterController.cpp" />
