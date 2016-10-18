@@ -14,31 +14,31 @@ cMainGame::cMainGame(void)
 	,m_pMapManager(NULL)
 {
 	//抗力内靛
-	m_vec3Pivot1 = D3DXVECTOR3(15.0f, 0.0f, 2.0f);
-	m_fDistPerSec1 = 5.0f;
-	m_vec3Direction1 = D3DXVECTOR3(-5.0f, 0.0f, 0.0f);
-	m_pSphereCollider1 = new cSphereCollider(5.0f, &m_vec3Pivot1, &m_fDistPerSec1, &m_vec3Direction1);
-	
-	m_vec3Pivot2 = D3DXVECTOR3(-15.0f, 0.0f, -2.0f);
-	m_fDistPerSec2 = 5.0f;
-	m_vec3Direction2 = D3DXVECTOR3(5.0f, 0.0f, 0.0f);
-	m_pSphereCollider2 = new cSphereCollider(5.0f, &m_vec3Pivot2, &m_fDistPerSec2, &m_vec3Direction2);
+	//m_vec3Pivot1 = D3DXVECTOR3(15.0f, 0.0f, 2.0f);
+	//m_fDistPerSec1 = 5.0f;
+	//m_vec3Direction1 = D3DXVECTOR3(-5.0f, 0.0f, 0.0f);
+	//m_pSphereCollider1 = new cSphereCollider(5.0f, &m_vec3Pivot1, &m_fDistPerSec1, &m_vec3Direction1);
+	//
+	//m_vec3Pivot2 = D3DXVECTOR3(-15.0f, 0.0f, -2.0f);
+	//m_fDistPerSec2 = 5.0f;
+	//m_vec3Direction2 = D3DXVECTOR3(5.0f, 0.0f, 0.0f);
+	//m_pSphereCollider2 = new cSphereCollider(5.0f, &m_vec3Pivot2, &m_fDistPerSec2, &m_vec3Direction2);
 	//抗力内靛
 }
 
 cMainGame::~cMainGame(void)
 {
 	//抗力内靛
-	delete m_pSphereCollider2;
-	delete m_pSphereCollider1;
+	//delete m_pSphereCollider2;
+	//delete m_pSphereCollider1;
 	//抗力内靛
 	SAFE_DELETE(m_pCamera);
 	m_pPlayer->Destroy();
 	SAFE_RELEASE(m_pPlayer);
 	SAFE_DESTROY(m_pMonsterManager);
 	SAFE_DESTROY(m_pMapManager);
-	g_pColliderManager->Destroy();
 	g_pSkillManager->Destroy();
+	g_pColliderManager->Destroy();
 	g_pTextureManager->Destroy();
 	g_pSkinnedMeshManager->Destroy();
 	g_pObjectManager->Destroy();
@@ -107,10 +107,11 @@ void cMainGame::Render()
 	
 	m_pPlayer->Render();
 	
-	m_pMonsterManager->Render();
+	if(m_pMonsterManager)
+		m_pMonsterManager->Render();
 
 	g_pSkillManager->Render();
-
+	g_pColliderManager->Render();
 	g_pD3DDevice->EndScene();
 
 	g_pD3DDevice->Present(NULL, NULL, NULL, NULL);

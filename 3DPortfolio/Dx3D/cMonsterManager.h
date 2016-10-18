@@ -3,7 +3,6 @@
 
 class Player;
 
-#define MONSTER_QUANTITY 3
 
 class cMonsterManager
 {

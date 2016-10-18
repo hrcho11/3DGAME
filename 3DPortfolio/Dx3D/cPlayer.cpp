@@ -27,6 +27,7 @@ void cPlayer::Update()
 
 void cPlayer::Destroy()
 {
+	m_pCharacterController->Destroy();
 }
 
 void cPlayer::Render()

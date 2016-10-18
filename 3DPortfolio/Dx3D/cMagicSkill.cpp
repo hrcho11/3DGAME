@@ -4,11 +4,11 @@
 
 cMagicSkill::cMagicSkill()
 	:m_nAtkDamage(20)
-	,m_fMoveSpeed(0.4f)
+	,m_fMoveSpeed(20.0f)
 	,m_pMesh(nullptr)
 	, m_vPos(0.0f,0.0f,-1.0f)
 	,m_isFire(false)
-	, m_fDistance(200.0f)
+	, m_fDistance(600.0f)
 	, m_vDir(0.0f,0.0f,0.0f)
 	, m_vStartPos(0.0f,0.0f,0.0f)
 {
@@ -30,13 +30,14 @@ void cMagicSkill::Init(D3DXVECTOR3& vPos)
 {
 	m_vPos = m_vStartPos = vPos;
 	D3DXMatrixTranslation(&m_matWorld, m_vPos.x, m_vPos.y, m_vPos.z);
+
 }
 
 void cMagicSkill::Update()
 {
 	if (m_isFire)
 	{
-		m_vPos += m_vDir  * m_fMoveSpeed;
+		//m_vPos += m_vDir  * m_fMoveSpeed;
 		if(m_fDistance <=D3DXVec3LengthSq(&(m_vPos - m_vStartPos)))
 			SetToOriginal();
 		D3DXMatrixTranslation(&m_matWorld, m_vPos.x, m_vPos.y, m_vPos.z);
@@ -46,6 +47,7 @@ void cMagicSkill::Update()
 
 void cMagicSkill::Destroy()
 {
+	SAFE_DELETE(m_pCollider);
 	SAFE_RELEASE(m_pMesh);
 }
 
@@ -63,5 +65,12 @@ void cMagicSkill::Render()
 void cMagicSkill::SetToOriginal()
 {
 	m_isFire = false;
-	m_vPos = D3DXVECTOR3(100.0f,100.0f,100.0f);
+	m_vPos = D3DXVECTOR3(300.0f,300.0f,300.0f);
+	SAFE_DELETE(m_pCollider);
+}
+
+void cMagicSkill::SetDiretion(D3DXVECTOR3 & vDir)
+{
+	m_vDir = vDir;
+	m_pCollider = new cSphereCollider(0.4f, &m_vPos, &m_fMoveSpeed, &m_vDir);
 }

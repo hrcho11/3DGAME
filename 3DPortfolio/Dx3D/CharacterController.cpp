@@ -3,12 +3,13 @@
 
 
 CharacterController::CharacterController()
-	:m_fSpeed(0.05f)
+	:m_fSpeed(0.1f)
 	,m_vDestination(0.0f,0.0f,0.0f)
 	, m_vPos(0.0f,0.0f,0.0f)
 	, m_vDir(0.0f,0.0f,-1.0f)
 	, m_eState(IDLE)
 	, m_pSkinnedMesh(nullptr)
+	, m_pCollider(nullptr)
 {
 }
 
@@ -21,6 +22,7 @@ void CharacterController::Init()
 {
 	m_pSkinnedMesh = new cSkinnedMesh("Data/Character/human/", "human.X");
 	m_pSkinnedMesh->SetAnimationIndex(m_eState);
+	// = new cSphereCollider(2.0f, &m_vPos, &m_fSpeed, &m_vDir);
 }
 
 void CharacterController::Update()
@@ -34,9 +36,6 @@ void CharacterController::Update()
 		m_pSkinnedMesh->SetPosition(Running());
 		break;
 	case ATK:
-		//if (!m_pSkinnedMesh->GetIsCoolTime())
-		//	ChangeState(IDLE);
-
 		if (m_pSkinnedMesh->AtkAnimationMatch())
 			g_pSkillManager->Fire(m_vPos, m_vDir);
 		break;
@@ -46,6 +45,7 @@ void CharacterController::Update()
 
 void CharacterController::Destroy()
 {
+	SAFE_DELETE(m_pCollider);
 }
 
 void CharacterController::Render()
