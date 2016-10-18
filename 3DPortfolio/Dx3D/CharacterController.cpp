@@ -91,15 +91,12 @@ float CharacterController::CalculateRotY()
 	D3DXVec3Normalize(&vDirDest,&(m_vDestination - m_vPos));
 
 	float fDot = D3DXVec3Dot(&vDir, &vDirDest);
-	float fDirLength = D3DXVec3Length(&vDir);
-	float fvDestLength = D3DXVec3Length(&vDirDest);
-	float fCos = fDot / (fDirLength * fvDestLength);
 	float fAngle = 0.0f;
 	
-	if (fCos >= 1.0f)
+	if (fDot >= 1.0f)
 		fAngle = 0.0f;
 	else 
-		fAngle = acosf(fCos);
+		fAngle = acosf(fDot);
 
 	D3DXVECTOR3 vCross;
 	D3DXVec3Cross(&vCross, &vDir, &vDirDest);
