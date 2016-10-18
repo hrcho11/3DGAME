@@ -13,6 +13,7 @@ protected:
 	bool				m_isFire;
 	D3DXVECTOR3		m_vDir;
 	D3DXVECTOR3		m_vStartPos;
+	cSphereCollider*	m_pCollider;
 public:
 	cMagicSkill();
 	~cMagicSkill();
@@ -26,6 +27,6 @@ public:
 	inline bool GetIsFire() { return m_isFire; }
 
 	inline void SetIsFire(bool isFire) { m_isFire = isFire; }
-	inline void SetDiretion(D3DXVECTOR3& vDir) { m_vDir = vDir; }
+	void SetDiretion(D3DXVECTOR3& vDir);
 };
 

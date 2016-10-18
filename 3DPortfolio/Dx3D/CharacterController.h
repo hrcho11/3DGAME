@@ -17,7 +17,7 @@ private:
 	D3DXVECTOR3				m_vDestination;
 	float						m_fSpeed;
 	eAnimationState m_eState;
-
+	cSphereCollider*		m_pCollider;
 	cSkinnedMesh*		m_pSkinnedMesh;
 public:
 

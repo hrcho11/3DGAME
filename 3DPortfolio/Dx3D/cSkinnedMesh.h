@@ -45,6 +45,8 @@ public:
 	void AddRotY(float rotY)
 	{
 		m_fRotY += rotY;
+		
+		assert(m_fRotY != -NAN && "Angle is nan");
 	}
 	ST_SPHERE* GetBoundingSphere()
 	{

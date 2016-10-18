@@ -101,6 +101,8 @@ void cSkinnedMesh::UpdateAndRender()
 
 	if(m_pRootFrame)
 	{
+		
+
 		D3DXMATRIXA16 matWorld,matR,matT,matS;
 		D3DXMatrixIdentity(&matR);
 		D3DXMatrixRotationY(&matR, m_fRotY);
@@ -336,6 +338,8 @@ void cSkinnedMesh::SetAnimationIndex( int nIndex )
 	{
 		m_isCoolTime = true;
 		m_isFireOnce = false;
+		AttackOnlyOnce();
+		return;
 	}
 	DWORD dwNewTrack = (m_dwCurrTrack == 1 ? 0 : 1);
 	LPD3DXANIMATIONSET animSet = nullptr;

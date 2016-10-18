@@ -5,7 +5,7 @@
 cMonster::cMonster()
 	:m_pSkinnedMesh(nullptr)
 	,m_pStateMachine(nullptr)
-	, m_fSpeed(0.03f)
+	, m_fSpeed(0.08f)
 	,m_vDir(0.0f,0.0f,-1.0f)
 	,m_fAtkRadius(150.0f)
 {
@@ -72,20 +72,26 @@ void cMonster::Tracking()
 	D3DXVec3Normalize(&vDir, &vDir);
 
 	D3DXVECTOR3 vMove = m_vPos + (vDir * m_fSpeed);
-
-	m_pSkinnedMesh->AddRotY(RotY(vDir));
+	float fAngle = RotY(vDir);
+	m_pSkinnedMesh->AddRotY(fAngle);
 	SetPos(vMove);
 }
 
 float cMonster::RotY(D3DXVECTOR3 & vDir)
 {
 	float fDot = D3DXVec3Dot(&m_vDir, &vDir);
-	float fAngle;
+	float fAngle =0.0f;
 
 	if (fDot > 1.0f)
 		fAngle = 0.0f;
+	else if (fDot < -1.0f)
+	{
+		fDot = -1.0f;
+		fAngle = acosf(fDot);
+	}
 	else
-	 fAngle = acosf(fDot);
+		fAngle = acosf(fDot);
+
 
 	D3DXVECTOR3 vCross;
 	D3DXVec3Cross(&vCross, &m_vDir, &vDir);
@@ -94,6 +100,7 @@ float cMonster::RotY(D3DXVECTOR3 & vDir)
 		fAngle *= -1.0f;
 
 	m_vDir = vDir;
+	
 
 	return fAngle;
 }
