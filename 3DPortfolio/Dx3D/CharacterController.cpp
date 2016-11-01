@@ -22,7 +22,7 @@ void CharacterController::Init()
 {
 	m_pSkinnedMesh = new cSkinnedMesh("Data/Character/human/", "human.X");
 	m_pSkinnedMesh->SetAnimationIndex(m_eState);
-	// = new cSphereCollider(2.0f, &m_vPos, &m_fSpeed, &m_vDir);
+
 }
 
 void CharacterController::Update()
